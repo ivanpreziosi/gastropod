@@ -23,6 +23,16 @@ class CreateProfilesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('profiles')->insert(
+            array(
+                'user_id' => 1,
+                'nickname' => 'Admin',
+                'level' => 1,
+                'xp' => 0,
+            )
+        );
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Gastropod\Providers;
+namespace RadFic\Gastropod\Providers;
 
 use App\Services\Riak\Connection;
 use Illuminate\Support\ServiceProvider;
