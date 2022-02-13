@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use RadFic\Gastropod\Http\Controllers\GastropodController;
+use RadFic\Gastropod\Http\Controllers\UserCrudController;
+
 
 
 
