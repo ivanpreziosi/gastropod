@@ -7,3 +7,11 @@ Gastropod a simple Laravel package intended to speed up and ease the creation of
 
 Install:
 composer require radfic/gastropod
+
+Publish migrations:
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"
+
+After this command a new migration will be copied in your app's migrations folder: 2022_02_13_172741create_gastropod_admins_table.php
+
+Now you should run your migrations to let artisan create the Admins table for you:
+

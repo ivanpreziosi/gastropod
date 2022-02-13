@@ -22,7 +22,7 @@ class GastropodServiceProvider extends ServiceProvider
             // Export the migration
             if (! class_exists('CreateGastropodAdminsTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/migrations/create_gastropod_admins_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . 'create_gastropod_admins_table.php'),
+                    __DIR__ . '/../database/migrations/create_gastropod_admins_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_gastropod_admins_table.php'),
                     // you can add any number of migrations here
                 ], 'migrations');
             }
