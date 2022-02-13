@@ -1,6 +1,6 @@
 <?php
 
-namespace RadFic\Gastropod\Controllers\Admin;
+namespace RadFic\Gastropod\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

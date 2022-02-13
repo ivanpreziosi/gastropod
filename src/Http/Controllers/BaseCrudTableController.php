@@ -1,6 +1,6 @@
 <?php
 
-namespace RadFic\Gastropod\Controllers;
+namespace RadFic\Gastropod\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
