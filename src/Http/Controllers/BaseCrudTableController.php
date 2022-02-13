@@ -105,7 +105,7 @@ class BaseCrudTableController extends Controller
             'name'=> $this->name,
             'items' => $items
         ];
-        return view('admin.index', $data);
+        return view('gastropod::index', $data);
     }
 
     /**
@@ -143,7 +143,7 @@ class BaseCrudTableController extends Controller
             'columnNames' => $columnNames,
             'dropdowns' => $dropdowns
         ];
-        return view('admin.create', $data);
+        return view('gastropod::create', $data);
     }
 
     /**
@@ -175,7 +175,7 @@ class BaseCrudTableController extends Controller
             'name'=> $this->name,
             'itemData' => $this->formatShowData(print_r($itemObj->toArray(), true))
         ];
-        return view('admin.show', $data);
+        return view('gastropod::show', $data);
     }
 
     /**
@@ -188,8 +188,6 @@ class BaseCrudTableController extends Controller
     {
         $itemObj = $this->class::find($item)->setHidden([]);
         $columnNames = Schema::getColumnListing($itemObj->getTable());
-
-
         $dropdowns = [];
         foreach ($columnNames as $columnName) {
             foreach ($this->relationsMap as $relationName => $relationData) {
@@ -207,13 +205,12 @@ class BaseCrudTableController extends Controller
                 }
             }
         }
-
         $data = [
             'name'=> $this->name,
             'item' => $itemObj->toArray(),
             'dropdowns' => $dropdowns
         ];
-        return view('admin.edit', $data);
+        return view('gastropod::edit', $data);
     }
 
     /**

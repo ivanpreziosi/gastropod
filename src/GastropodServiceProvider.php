@@ -18,6 +18,23 @@ class GastropodServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        if ($this->app->runningInConsole()) {
+            // Export the migration
+            if (! class_exists('CreateGastropodAdminsTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/migrations/create_gastropod_admins_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . 'create_gastropod_admins_table.php'),
+                    // you can add any number of migrations here
+                ], 'migrations');
+            }
+
+            // Publish assets
+            $this->publishes([
+                __DIR__.'/../resources/assets' => public_path('gastropod'),
+            ], 'assets');
+        }
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/gastropod.php');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'gastropod');
     }
 }

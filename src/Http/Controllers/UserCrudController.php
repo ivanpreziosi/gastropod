@@ -2,7 +2,6 @@
 
 namespace RadFic\Gastropod\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use App\Models\Profile;

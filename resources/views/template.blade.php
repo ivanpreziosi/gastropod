@@ -14,7 +14,7 @@
 	<!-- BOOTSTRAP ICONS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	<!-- CUSTOM CSS -->
-	<link rel="stylesheet" href="{{ asset('/css/gastropod.css') }}">
+	<link rel="stylesheet" href="{{ asset('gastropod/css/gastropod.css') }}">
 
 
 
@@ -91,7 +91,7 @@
 		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
 	</script>
 	<!-- G@STROPOD -->
-	<script src="{{ asset('/js/gastropod.js') }}"></script>
+	<script src="{{ asset('gastropod/js/gastropod.js') }}"></script>
 </body>
 
 </html>
