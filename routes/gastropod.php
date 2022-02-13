@@ -18,7 +18,7 @@ Route::prefix('gastropod')->group(function () {
 
     Route::middleware(['gastropodAuth'])->group(function () {
         Route::resources([
-            'users' => 'Gastropod\Controllers\UserCrudController',
+            'users' => 'Gastropod\Http\Controllers\UserCrudController',
         ]);
     });
 });
