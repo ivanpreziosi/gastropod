@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Admin;
 use App\Models\User;
 
-class CrudAdminController extends BaseCrudTableController
+class AdminCrudController extends BaseCrudTableController
 {
     public function __construct()
     {
