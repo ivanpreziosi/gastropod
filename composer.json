@@ -1,41 +1,20 @@
 {
-    "name": "gastropod",
+    "name": "radfic/gastropod",
     "type": "library",
-    "description": "Create deep copies (clones) of your objects",
+    "description": "A fast crud generator for laravel 8",
     "keywords": [
-        "clone",
-        "copy",
-        "duplicate",
-        "object",
-        "object graph"
+        "crud",
+        "admin",
+        "generator"
     ],
-    "license": "MIT",
+    "authors": [{
+        "name": "Ivan Preziosi",
+        "email": "ivan.preziosi@gmail.com"
+    }],
+    "require": {},
     "autoload": {
         "psr-4": {
-            "DeepCopy\\": "src/DeepCopy/"
-        },
-        "files": [
-            "src/DeepCopy/deep_copy.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "DeepCopy\\": "fixtures/",
-            "DeepCopyTest\\": "tests/DeepCopyTest/"
+            "RadFic\\Gastropod\\": "src"
         }
-    },
-    "require": {
-        "php": "^7.1 || ^8.0"
-    },
-    "require-dev": {
-        "doctrine/collections": "^1.0",
-        "doctrine/common": "^2.6",
-        "phpunit/phpunit": "^7.1"
-    },
-    "replace": {
-        "myclabs/deep-copy": "self.version"
-    },
-    "config": {
-        "sort-packages": true
     }
 }
