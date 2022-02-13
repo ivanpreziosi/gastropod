@@ -9,7 +9,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
-class CrudUserController extends BaseCrudTableController
+class UserCrudController extends BaseCrudTableController
 {
     public function __construct()
     {
