@@ -1,6 +1,6 @@
 <?php
 
-namespace RadFic\Gastropod\Middleware;
+namespace RadFic\Gastropod\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
