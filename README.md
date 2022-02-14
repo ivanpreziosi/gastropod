@@ -1,6 +1,4 @@
-<div style="width:100%;text-align:center">
-<img src="/resources/assets/img/gastropod.jpg" title="gastropod">
-</div>
+<div style="width:100%;text-align:center"><img src="/resources/assets/img/gastropod.jpg" title="gastropod"></div>
 
 
 Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin tables for small websites.
