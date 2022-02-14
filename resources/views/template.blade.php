@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	@if (Auth::user() && Auth::user()->gastronaut == true)
+	@if (Auth::user())
 	<header>
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">

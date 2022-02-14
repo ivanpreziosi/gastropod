@@ -39,7 +39,6 @@ class GastropodController extends Controller
         );
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            Auth::user()->gastronaut = true;
 
             return redirect('gastropod/users');
         } else {
