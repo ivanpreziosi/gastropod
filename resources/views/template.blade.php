@@ -78,7 +78,7 @@
 
 	<footer class="footer mt-auto py-3 bg-dark fixed-bottom mt-9">
 		<div class="container text-center">
-			<span class="text-muted">G@STROPOD v.0.0.1</span>
+			<span class="text-muted"><a href="https://github.com/ivanpreziosi/gastropod" target="_blank">G@STROPOD</a> v.0.0.1</span>
 		</div>
 	</footer>
 
