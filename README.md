@@ -47,6 +47,7 @@ After running your migrations you should have a new table in your db: 'gastropod
 | id | user_id | created_at | updated_at |
 |----|---------|------------|------------|
 ```
+Gastropod is assuming you have a users table and a User model in your app already. To let users use Gastropod you will have to add a record in this table per user, referencing the id of the user. The first Gastropod Admin has to be set with your own means (for example with PhpMyAdmin). Once Gastropo is installed you will add more admins using it's interface.
 
 ## Create First Admin
 Manually add an admin inserting a new record referencing a users table row:
