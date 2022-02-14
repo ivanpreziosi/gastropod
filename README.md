@@ -46,8 +46,9 @@ After running your migrations you should have a new table in your db: 'gastropod
 ```
 
 ## Create First Admin
-Manually add an admin inserting a row referencing a users table row:
+Manually add an admin inserting a new record referencing a users table row:
 ```
-INSERT INTO `gastropod_admins` (`user_id`) VALUES ('USER-ID-TO-MAKE-ADMIN');
+INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
+This user will now be allowed to login into gastropod.
 
