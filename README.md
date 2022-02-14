@@ -17,7 +17,7 @@ php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider
 ```
 Run this command to publish all the gastropod assets needed for the package to function.
 It will create:
-- migrations: a migration for a new table called `gastropod_admins' will be copied in your migration folder. This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod.
+- migrations: a migration for a new table called `gastropod_admins` will be copied in your migration folder. This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod.
 
 This is equivalent to publishing the single tags one by one:
 ### migrations:
