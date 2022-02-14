@@ -40,3 +40,6 @@ After running your migrations you should have a new table in your db: 'gastropod
 ###### gastropod_admins                      
 | id | user_id | created_at | updated_at |
 |----|---------|------------|------------|
+
+## Create First Admin
+Manually add an admin inserting a row referencing a users table row.
