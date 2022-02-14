@@ -37,9 +37,11 @@ php artisan migrate
 ```
 
 After running your migrations you should have a new table in your db: 'gastropod_admins'.
-###### gastropod_admins                      
+```
+| gastropod_admins                       |
 | id | user_id | created_at | updated_at |
 |----|---------|------------|------------|
+```
 
 ## Create First Admin
 Manually add an admin inserting a row referencing a users table row.
