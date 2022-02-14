@@ -36,4 +36,7 @@ Now you should run your migrations to let artisan create the Admins table for yo
 php artisan migrate
 ```
 
-After that gastropod should be ready to use.
+After running your migrations you should have a new table in your db: 'gastropod_admins'.
+|gastropod_admins                        |
+| id | user_id | created_at | updated_at |
+|----|---------|------------|------------|
