@@ -84,7 +84,7 @@
 			@php
 			$truncatedString = $value;
 			if (strlen($truncatedString)>20 && !str_contains($key,'__REMOTE')) {
-				$truncatedString = substr($truncatedString, 0, 17).'...';
+			$truncatedString = substr($truncatedString, 0, 17).'...';
 			}
 			@endphp
 			<div title="{{$value}}">{!! $truncatedString !!}</div>
@@ -129,31 +129,25 @@
 			</div>
 		</form>
 	</div>
-	<div class=" p-2 bd-highlight">{{ $items->links() }}
+	
+</div>
+<!-- Modal -->
+<div class=" modal fade" id="delete-record-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-	</div>
-
-
-	<!-- Modal -->
-	<div class=" modal fade" id="delete-record-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					So you want to delete it? Are you sure?
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nope</button>
-					<button type="button" class="btn btn-danger" onclick="doDeleteRecord();">DELETE!</button>
-				</div>
+			<div class="modal-body">
+				So you want to delete it? Are you sure?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nope</button>
+				<button type="button" class="btn btn-danger" onclick="doDeleteRecord();">DELETE!</button>
 			</div>
 		</div>
 	</div>
-
-
-
-	@endsection
+</div>
+@endsection
