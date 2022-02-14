@@ -1,10 +1,4 @@
-  @@@@@     @     @@@@@  @@@@@@@ @@@@@@  @@@@@@@ @@@@@@  @@@@@@@ @@@@@@
- @     @   @ @   @     @    @    @     @ @     @ @     @ @     @ @     @
- @        @   @  @          @    @     @ @     @ @     @ @     @ @     @
- @  @@@@ @     @  @@@@@     @    @@@@@@  @     @ @@@@@@  @     @ @     @
- @     @ @@@@@@@       @    @    @   @   @     @ @       @     @ @     @
- @     @ @     @ @     @    @    @    @  @     @ @       @     @ @     @
-  @@@@@  @     @  @@@@@     @    @     @ @@@@@@@ @       @@@@@@@ @@@@@@
+![G@STROPOD](https://github.com/ivanpreziosi/gastropod/blob/main/resources/assets/img/gastropod.jpg)
 
 
 Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin tables for small websites.
@@ -15,11 +9,14 @@ Gastropod a simple Laravel package intended to speed up and ease the creation of
 
 # Install
 You can install the package using composer:
-```composer require radfic/gastropod```
+```
+composer require radfic/gastropod
+```
 
 ## Publish all gastropod files:
-```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"```
-
+```
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
+```
 This is equivalent to publishing the single tags one by one:
 ### migrations:
 ```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"```
@@ -37,6 +34,8 @@ After publishng a new migration will be present in your app's migrations folder:
 It defines a new table in your database to hold reference to users allowed to access gastropod.
 
 Now you should run your migrations to let artisan create the Admins table for you:
-```php artisan migrate```
+```
+php artisan migrate
+```
 
 After that gastropod should be ready to use.
