@@ -35,8 +35,7 @@ class GastropodController extends Controller
 
         $credentials = array(
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'confirm_token' => null,
+            'password' => $request->input('password')
         );
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
