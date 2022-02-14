@@ -19,6 +19,8 @@ class GastropodAuth
      */
     public function handle(Request $request, Closure $next)
     {
+        if(!config('gastropod.enable_gastropod_auth'))return $next($request);
+
         if (!Auth::check()) {
             return redirect('/gastropod/login');
         }

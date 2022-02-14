@@ -28,7 +28,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12 text-center">
-			<img src="{{ asset('/img/gastropod.jpg') }}" class="img-fluid" style="width:200px;" />
+			<img src="{{ asset('/gastropod/img/gastropod.jpg') }}" class="img-fluid" style="width:200px;" />
 		</div>
 	</div>
 

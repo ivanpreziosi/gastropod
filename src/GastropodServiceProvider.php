@@ -28,6 +28,11 @@ class GastropodServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
 
+            // Publish config file
+            $this->publishes([
+            __DIR__.'/../config/gastropod.php' => config_path('gastropod.php'),
+            ], 'config');
+
             // Publish assets
             $this->publishes([
                 __DIR__.'/../resources/assets' => public_path('gastropod'),
