@@ -105,7 +105,7 @@ class BaseCrudTableController extends Controller
             'name'=> $this->name,
             'items' => $items
         ];
-        return view('gastropod::index', $data);
+        return view('radfic.gastropod.index', $data);
     }
 
     /**
@@ -143,7 +143,7 @@ class BaseCrudTableController extends Controller
             'columnNames' => $columnNames,
             'dropdowns' => $dropdowns
         ];
-        return view('gastropod::create', $data);
+        return view('radfic.gastropod.create', $data);
     }
 
     /**
@@ -175,7 +175,7 @@ class BaseCrudTableController extends Controller
             'name'=> $this->name,
             'itemData' => $this->formatShowData(print_r($itemObj->toArray(), true))
         ];
-        return view('gastropod::show', $data);
+        return view('radfic.gastropod.show', $data);
     }
 
     /**
@@ -210,7 +210,7 @@ class BaseCrudTableController extends Controller
             'item' => $itemObj->toArray(),
             'dropdowns' => $dropdowns
         ];
-        return view('gastropod::edit', $data);
+        return view('radfic.gastropod.edit', $data);
     }
 
     /**

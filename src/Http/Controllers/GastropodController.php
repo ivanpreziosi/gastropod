@@ -18,7 +18,7 @@ class GastropodController extends Controller
     public function getLogin()
     {
         $data = [];
-        return view('gastropod::login', $data);
+        return view('radfic.gastropod.login', $data);
     }
 
     public function doLogin(Request $request)
