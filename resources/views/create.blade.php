@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('radfic.gastropod.template')
 
 @section('content')
 <div class="row">
