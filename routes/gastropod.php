@@ -9,7 +9,7 @@ use RadFic\Gastropod\Http\Controllers\UserCrudController;
 
 
 
-Route::prefix('gastropod')->group(['middleware' => ['web']],function () {
+Route::prefix('gastropod')->middleware(['web'])->group(function () {
     Route::get('/', [GastropodController::class,'getLogin']);
 
     Route::get('/login', [GastropodController::class,'getLogin']);
