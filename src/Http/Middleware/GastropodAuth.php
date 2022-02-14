@@ -31,7 +31,7 @@ class GastropodAuth
             return redirect('/gastropod/login');
         }
 
-        $admin = DB::table('admins')
+        $admin = DB::table('gastropod_admins')
                 ->where('user_id', '=', $user->id)
                 ->first();
 
