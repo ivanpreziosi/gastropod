@@ -4,6 +4,7 @@ namespace RadFic\Gastropod;
 
 use RadFic\Gastropod\Http\Middleware\GastropodAuth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class GastropodServiceProvider extends ServiceProvider
 {
