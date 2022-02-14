@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 
-use App\Models\Admin;
+use RadFic\Gastropod\Models\GastropodAdmin;
 use App\Models\User;
 
 class AdminCrudController extends BaseCrudTableController
 {
     public function __construct()
     {
-        /** set class  *************** */
-        $this->class = Admin::class;
+        /** set model  *************** */
+        $this->class = GastropodAdmin::class;
         /***************************** */
 
         /** don't touch! *********/

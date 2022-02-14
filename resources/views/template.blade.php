@@ -26,7 +26,7 @@
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="container-fluid">
-				<img src="{{ asset('/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
+				<img src="{{ asset('gastropod/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
 				 &nbsp;&nbsp;<a class="navbar-brand" href="/gastropod/users"> ••G@STROPOD•• </a> 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 					aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,16 +38,16 @@
 							<a class="nav-link" aria-current="page" href="/gastropod/users">Users</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="/gastropod/profiles">Profiles</a>
+							<a class="nav-link" aria-current="page" href="#">Another Section</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="/gastropod/maps" id="navbarDropdown" role="button"
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 								data-bs-toggle="dropdown" aria-expanded="false">
-								Maps
+								DropDown
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="/gastropod/maps">Maps</a></li>
-								<li><a class="dropdown-item" href="/gastropod/map_user">Maps x User</a></li>
+								<li><a class="dropdown-item" href="#">One section</a></li>
+								<li><a class="dropdown-item" href="#">Another</a></li>
 								<li>
 									<hr class="dropdown-divider">
 								</li>

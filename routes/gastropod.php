@@ -1,13 +1,8 @@
 <?php
-
-
 use Illuminate\Support\Facades\Route;
 use RadFic\Gastropod\Http\Controllers\GastropodController;
 use RadFic\Gastropod\Http\Controllers\UserCrudController;
-
-
-
-
+use RadFic\Gastropod\Http\Controllers\AdminCrudController;
 
 Route::prefix('gastropod')->middleware(['web'])->group(function () {
     Route::get('/', [GastropodController::class,'getLogin']);
@@ -19,6 +14,7 @@ Route::prefix('gastropod')->middleware(['web'])->group(function () {
     Route::middleware(['gastropodAuth'])->group(function () {
         Route::resources([
             'users' => 'RadFic\Gastropod\Http\Controllers\UserCrudController',
+            'admins' => 'RadFic\Gastropod\Http\Controllers\AdminCrudController',
         ]);
     });
 });

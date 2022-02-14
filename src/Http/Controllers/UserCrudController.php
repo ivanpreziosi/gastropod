@@ -13,7 +13,7 @@ class UserCrudController extends BaseCrudTableController
 {
     public function __construct()
     {
-        /** set class   **/
+        /** set model   **/
         $this->class = User::class;//declare the class of the eloquent instances
         /** don't touch **/
         $item = new $this->class();//a eloquent instance
