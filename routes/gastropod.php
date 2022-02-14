@@ -16,9 +16,9 @@ Route::prefix('gastropod')->group(['middleware' => ['web']],function () {
     Route::post('/login', [GastropodController::class,'doLogin']);
     Route::get('/logout', [GastropodController::class,'logout']);
 
-    //Route::middleware(['gastropodAuth'])->group(function () {
+    Route::middleware(['gastropodAuth'])->group(function () {
         Route::resources([
             'users' => 'RadFic\Gastropod\Http\Controllers\UserCrudController',
         ]);
-    //});
+    });
 });
