@@ -1,4 +1,4 @@
-![G@STROPOD](https://github.com/ivanpreziosi/gastropod/blob/main/resources/assets/img/gastropod.jpg)
+![G@STROPOD](/resources/assets/img/gastropod.jpg)
 
 
 Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin tables for small websites.
