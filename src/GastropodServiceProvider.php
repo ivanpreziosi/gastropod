@@ -2,7 +2,7 @@
 
 namespace RadFic\Gastropod;
 
-use App\Services\Riak\Connection;
+use RadFic\Gastropod\Http\Middleware\GastropodAuth;
 use Illuminate\Support\ServiceProvider;
 
 class GastropodServiceProvider extends ServiceProvider
@@ -39,7 +39,8 @@ class GastropodServiceProvider extends ServiceProvider
         }
 
         $this->loadRoutesFrom(__DIR__.'/../routes/gastropod.php');
-
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'gastropod');
+        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'gastropod');
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('gastropodAuth', GastropodAuth::class);
     }
 }
