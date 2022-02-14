@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	@if ($errors->any())
+	@if (isset($errors) && $errors->any())
 	<div class="alert alert-danger">
 		<strong>Whoops!</strong> There were some problems with your input.<br><br>
 		<ul>
