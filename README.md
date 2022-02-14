@@ -15,6 +15,10 @@ composer require radfic/gastropod
 ```
 php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
 ```
+Run this command to publish all the gastropod assets needed for the package to function.
+It will create:
+- migrations: a migration for a new table called `gastropod_admins` will be copied in your migration folder. This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
+
 This is equivalent to publishing the single tags one by one:
 ### migrations:
 ```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"```
@@ -27,11 +31,10 @@ This is equivalent to publishing the single tags one by one:
 
 
 ## Run Migrations
-After publishng a new migration will be present in your app's migrations folder: "2022_02_13_172741create_gastropod_admins_table.php"
-
+After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741create_gastropod_admins_table.php`.
 It defines a new table in your database to hold reference to users allowed to access gastropod.
 
-Now you should run your migrations to let artisan create the Admins table for you:
+Now you should run your migrations to let artisan create the Admins table for you, by running the artisan migrate command:
 ```
 php artisan migrate
 ```
@@ -44,6 +47,7 @@ After running your migrations you should have a new table in your db: 'gastropod
 | id | user_id | created_at | updated_at |
 |----|---------|------------|------------|
 ```
+Gastropod is assuming you have a users table and a User model in your app already. To let users use Gastropod you will have to add a record in this table per user, referencing the id of the user. The first Gastropod Admin has to be set with your own means (for example with PhpMyAdmin). Once Gastropo is installed you will add more admins using it's interface.
 
 ## Create First Admin
 Manually add an admin inserting a new record referencing a users table row:
