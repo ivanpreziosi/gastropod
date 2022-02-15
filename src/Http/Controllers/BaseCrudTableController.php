@@ -30,7 +30,7 @@ class BaseCrudTableController extends Controller
             $this->class = Users::class;
         }
         $this->name = $item->getTable();
-        Paginator::useBootstrapFive();
+        Paginator::useBootstrap();
     }
 
 	/**
