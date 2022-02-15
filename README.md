@@ -38,7 +38,7 @@ php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider
 ```
 
 ## Run Migrations
-After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741create_gastropod_admins_table.php`.
+After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741_create_gastropod_admins_table.php`.
 It defines a new table in your database to hold reference to users allowed to access gastropod.
 
 Now you should run your migrations to let artisan create the table for you, by running the artisan migrate command:
