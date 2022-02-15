@@ -129,7 +129,9 @@
 			</div>
 		</form>
 	</div>
-	
+	<div class="p-2 bd-highlight">
+		{{ $items->links() }}
+	</div>
 </div>
 <!-- Modal -->
 <div class=" modal fade" id="delete-record-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
