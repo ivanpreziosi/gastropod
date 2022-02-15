@@ -54,7 +54,7 @@ class GastropodServiceProvider extends ServiceProvider
             ], 'routes');
 
         }
-        //$this->loadRoutesFrom(__DIR__.'/../routes/gastropod.php');
+        $this->loadRoutesFrom(base_path('routes/gastropod.php'));
         //$this->loadViewsFrom(__DIR__.'/../resources/views', 'gastropod');
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('gastropodAuth', GastropodAuth::class);
