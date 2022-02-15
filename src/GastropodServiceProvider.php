@@ -45,15 +45,12 @@ class GastropodServiceProvider extends ServiceProvider
 
             // Publish controllers
             $this->publishes([
-                __DIR__.'/Http/Controllers/BaseCrudTableController.php' => app_path('Http/Controllers/Gastropod'),
-                __DIR__.'/Http/Controllers/GastropodAdminCrudController.php' => app_path('Http/Controllers/Gastropod'),
-                __DIR__.'/Http/Controllers/GastropodController.php' => app_path('Http/Controllers/Gastropod'),
-                __DIR__.'/Http/Controllers/UserCrudController.php' => app_path('Http/Controllers/Gastropod'),
+                __DIR__.'/Http/Controllers' => app_path('Http/Controllers/Gastropod'),
             ], 'controllers');
 
             // Publish routes
             $this->publishes([
-                __DIR__.'/../routes/gastropod.php' => base_path('routes'),
+                __DIR__.'/../routes/gastropod.php' => base_path('routes/gastropod.php'),
             ], 'routes');
 
         }
