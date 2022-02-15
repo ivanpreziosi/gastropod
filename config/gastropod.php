@@ -1,16 +1,21 @@
 <?php
 
 return [
+
     /**
-     * Set to false to leave the crud open to the public!
+     * This is the name that will appear in the upper left navbar.
      */
-    'enable_gastropod_auth' => true,    
-    
+    'name' => '••G@STROPOD••',
+
     /**
-     * Gastropod resources to build admin routes
+     * This is the default page that Gastropod will open after login, like a sort of dashboard.
+     * Usually i set it to the Users Crud Page.
      */
-    'resources' => [
-        'users' => 'RadFic\Gastropod\Http\Controllers\UserCrudController',
-        'admins' => 'RadFic\Gastropod\Http\Controllers\AdminCrudController',
-    ]
+    'default_page' => '/gastropod/users',
+
+    /**
+     * WARNING:
+     * If set to false will leave the crud open to the public!
+     */
+    'enable_gastropod_auth' => true,   
 ];
