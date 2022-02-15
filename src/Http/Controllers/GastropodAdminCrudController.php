@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use RadFic\Gastropod\Models\GastropodAdmin;
 use App\Models\User;
 
-class AdminCrudController extends BaseCrudTableController
+class GastropodAdminCrudController extends BaseCrudTableController
 {
     public function __construct()
     {
