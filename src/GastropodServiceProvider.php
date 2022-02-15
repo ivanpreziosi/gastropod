@@ -35,12 +35,12 @@ class GastropodServiceProvider extends ServiceProvider
 
             // Publish assets
             $this->publishes([
-                __DIR__.'/../resources/assets' => public_path('gastropod'),
+                __DIR__.'/../resources/assets' => public_path('gastropod_assets'),
             ], 'assets');
 
             // Publish views
             $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/radfic/gastropod'),
+                __DIR__.'/../resources/views' => resource_path('views/gastropod'),
             ], 'views');
 
             // Publish controllers

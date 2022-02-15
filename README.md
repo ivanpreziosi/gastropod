@@ -21,8 +21,8 @@ Run this command to publish all the gastropod assets needed for the package to f
 It will create:
 - migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
 - config: a config file will be created in your app's config folder: `config/gastropod.php`. 
-- views: all the Gastropod crud related views will be located in `resources/views/radfic/gastropod/`.
-- assets: all the css, javascripts and image files will be located in `public/gastropod/`.
+- views: all the Gastropod crud related views will be located in `resources/views/gastropod/`.
+- assets: all the css, javascripts and image files will be located in `public/gastropod_assets/`.
 
 ### Manually publishing assets one by one:
 You may want to republish or publish only some of the assets. You can do this by running the artisan vendor:publish command specifing a tag:
