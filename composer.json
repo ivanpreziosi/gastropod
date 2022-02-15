@@ -5,7 +5,8 @@
     "keywords": [
         "crud",
         "admin",
-        "generator"
+        "generator",
+        "laravel"
     ],
     "authors": [{
         "name": "Ivan Preziosi",
