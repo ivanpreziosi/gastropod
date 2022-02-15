@@ -63,3 +63,5 @@ INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
 This user will now be allowed to login into gastropod.
 
+## Check installation
+Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to the record you inserted before in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
