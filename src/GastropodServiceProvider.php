@@ -54,9 +54,7 @@ class GastropodServiceProvider extends ServiceProvider
             // Publish routes
             $this->publishes([
                 __DIR__.'/../routes/gastropod.php' => base_path('routes'),
-            ], 'views');
-
-
+            ], 'routes');
 
         }
         //$this->loadRoutesFrom(__DIR__.'/../routes/gastropod.php');
