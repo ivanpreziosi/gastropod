@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 
 class BaseCrudTableController extends Controller
 {	
@@ -29,6 +30,7 @@ class BaseCrudTableController extends Controller
             $this->class = Users::class;
         }
         $this->name = $item->getTable();
+        Paginator::useBootstrapFive();
     }
 
 	/**
