@@ -19,19 +19,23 @@ php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider
 ```
 Run this command to publish all the gastropod assets needed for the package to function.
 It will create:
-- migrations: a migration for a new table called `gastropod_admins` will be copied in your migration folder. This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
-- config: a config file will be created in your app's config folder: `gastropod.php`. It will hold Gastropod config items and the resources part in which you will define all your routing resources.
+- migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
+- config: a config file will be created in your app's config folder: `config/gastropod.php`. 
+- views: all the Gastropod crud related views will be located in `resources/views/radfic/gastropod/`.
+- assets: all the css, javascripts and image files will be located in `public/gastropod/`.
 
-This is equivalent to publishing the single tags one by one:
-### migrations:
-```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"```
-### config file:
-```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"```
-### gastropod views:
-```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"```
-### assets:
-```php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"```
-
+### Manually publishing assets one by one:
+You may want to republish or publish only some of the assets. You can do this by running the artisan vendor:publish command specifing a tag:
+```
+#migrations
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"
+#config
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
+#views
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
+#assets
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"
+```
 
 ## Run Migrations
 After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741create_gastropod_admins_table.php`.
