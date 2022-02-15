@@ -2,7 +2,7 @@
   <img src="/resources/assets/img/gastropod.jpg" title="gastropod" style="width:25%!important;margin:auto;">
 </p>
 
-Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin pages for small websites.
+Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin pages for small websites. It assumes you already have a users table and a User Eloquent model to automatically create a simple Users and Admin crud. You can then further expand it to have it manage all of your tables, and you can setup a basic, yet expandable, crud system with very few lines of code. Gastropod views are created with [Bootstrap](https://getbootstrap.com/) and [jQuery](https://jquery.com/), and it pulls it's needed scripts and css from cdns without having you to do anything. Its Auth is based on existing Laravel Auth system, only adding a table to reference which users will be admitted to the crud. But users will still login against your own users table without having to modify it.
 
 **PLEASE NOTE THAT GASTROPOD IS STILL IN PRE-ALPHA STAGE, USE IT FOR EXPERIMENT OR IF YOU WANT TO CONTRIBUTE BUT DON'T USE IT IN A PRODUCTION ENVIRONMENT.**
 
@@ -38,7 +38,7 @@ php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider
 ```
 
 ## Run Migrations
-After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741create_gastropod_admins_table.php`.
+After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741_create_gastropod_admins_table.php`.
 It defines a new table in your database to hold reference to users allowed to access gastropod.
 
 Now you should run your migrations to let artisan create the table for you, by running the artisan migrate command:
@@ -61,5 +61,7 @@ Manually add an admin inserting a new record referencing a users table row:
 ```
 INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
-This user will now be allowed to login into gastropod.
+This user will now be allowed to login into gastropod. Every further user you would like to give access to Gastropod should have a related record in this table.
 
+## Check installation
+Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
