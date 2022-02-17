@@ -12,39 +12,11 @@ You can install the package using composer:
 ```
 composer require radfic/gastropod
 ```
-After that you must run the gastropod:install artisan command:
+After that you must run the `gastropod:install` artisan command:
 ```
 php artisan gastropod:install
 ```
 This will publish all needed files into your App folder structure.
-
-## Manually Publish all Gastropod files:
-If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
-```
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
-```
-It will create:
-- migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
-- config: a config file will be created in your app's config folder: `config/gastropod.php`. 
-- views: all the Gastropod crud related views will be located in `resources/views/gastropod/`.
-- assets: all the css, javascripts and image files will be located in `public/gastropod_assets/`.
-
-### Manually publishing assets one by one:
-You may want to republish or publish only some of the assets. You can do this by running the artisan vendor:publish command specifing a tag:
-```
-#migrations
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"
-#config
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
-#views
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
-#assets
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"
-#controllers
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
-#rouets
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
-```
 
 ## Run Migrations
 After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741_create_gastropod_admins_table.php`.
@@ -72,5 +44,58 @@ INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
 This user will now be allowed to login into gastropod. Every further user you would like to give access to Gastropod should have a related record in this table.
 
+## Register Gastropod Routes in RouteServiceProvider
+Last step is registering gastropod routes into your app's RouteServiceProvider. To do this open the file `app\Providers\RouteServiceProvider.php` and add the gastropod bit after all other entries in the boot function:
+```php
+public function boot()
+{
+    $this->configureRateLimiting();
+
+    $this->routes(function () {
+        [... YOUR OTHER ROUTES ..]
+
+        //G@STROPOD
+        Route::prefix('gastropod')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/gastropod.php'));
+
+    });
+}
+
+```
+
 ## Check installation
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
+
+
+## Manually Publish all Gastropod files:
+If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
+```
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
+```
+It will create:
+- migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
+- config: a config file will be created in your app's config folder: `config/gastropod.php`. 
+- views: all the Gastropod crud related views will be located in `resources/views/gastropod/`.
+- assets: all the css, javascripts and image files will be located in `public/gastropod_assets/`.
+- controllers: a new gastropod folder will be created in `app/Http/Controllers/`.
+- routes: a new routes file will be created in `routes/gastropod.php`.
+### Manually publishing assets one by one:
+You may want to republish or publish only some of the assets. You can do this by running the artisan vendor:publish command specifing a tag:
+```
+#migrations
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"
+#config
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
+#views
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
+#assets
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"
+#controllers
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="controllers"
+#routes
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="routes"
+```
+
+
