@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
 
 
 
@@ -40,12 +42,8 @@ class InstallGastropod extends Command
             }
         }
 
-        $this->info("Registering routes in service container...");
-        Route::prefix('gastropod')
-            ->middleware('web')
-            ->group(base_path('routes/gastropod.php'));
-
-
+        $this->info("Registering GastropodRoutesServiceProvider in service container...");
+        App::register(__DIR__.'/GastropodRoutesServiceProvider');
 
         $this->info('Gastropod successfully installed!');
     }
