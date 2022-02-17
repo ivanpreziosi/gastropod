@@ -43,7 +43,7 @@ class InstallGastropod extends Command
         $this->info("Registering routes in service container...");
         Route::prefix('gastropod')
             ->middleware('web')
-            ->namespace('RadFic\Gastropod')
+            ->namespace('App\Providers')
             ->group(base_path('routes/gastropod.php'));
 
 
