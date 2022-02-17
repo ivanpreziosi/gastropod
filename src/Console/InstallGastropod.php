@@ -43,7 +43,7 @@ class InstallGastropod extends Command
         }
 
         $this->info("Registering GastropodRoutesServiceProvider in service container...");
-        App::register(GastropodRoutesServiceProvider::class);
+        App::register(RadFic\Gastropod\GastropodRoutesServiceProvider::class);
 
         $this->info('Gastropod successfully installed!');
     }
