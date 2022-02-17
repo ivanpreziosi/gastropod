@@ -12,12 +12,17 @@ You can install the package using composer:
 ```
 composer require radfic/gastropod
 ```
+After that you must run the gastropod:install artisan command:
+```
+php artisan gastropod:install
+```
+This will publish all needed files into your App folder structure.
 
-## Publish all Gastropod files:
+## Manually Publish all Gastropod files:
+If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
 ```
 php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
 ```
-Run this command to publish all the gastropod assets needed for the package to function.
 It will create:
 - migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
 - config: a config file will be created in your app's config folder: `config/gastropod.php`. 
@@ -35,6 +40,10 @@ php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider
 php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
 #assets
 php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"
+#controllers
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
+#rouets
+php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
 ```
 
 ## Run Migrations
