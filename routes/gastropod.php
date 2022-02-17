@@ -4,7 +4,7 @@ use RadFic\Gastropod\Http\Controllers\GastropodController;
 use RadFic\Gastropod\Http\Controllers\UserCrudController;
 use RadFic\Gastropod\Http\Controllers\GastropodAdminCrudController;
 
-Route::get('/gastropod', [GastropodController::class,'getLogin']);
+Route::get('/', [GastropodController::class,'getLogin']);
 Route::get('/login', [GastropodController::class,'getLogin']);
 Route::post('/login', [GastropodController::class,'doLogin']);
 Route::get('/logout', [GastropodController::class,'logout']);
