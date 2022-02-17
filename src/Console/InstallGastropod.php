@@ -5,10 +5,13 @@ namespace RadFic\Gastropod\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
+use Illuminate\Support\Facades\Route;
+
+
+
 class InstallGastropod extends Command
 {
     protected $signature = 'gastropod:install';
-
     protected $description = 'Install Gastropod in your project.';
 
     public function handle()
@@ -36,6 +39,11 @@ class InstallGastropod extends Command
                 }
             }
         }
+
+        $this->info("Registering routes in service container...");
+        Route::group(base_path('routes/gastropod.php'));
+
+
         $this->info('Gastropod successfully installed!');
     }
 
