@@ -12,13 +12,11 @@ class GastropodRoutesServiceProvider extends RouteServiceProvider
     public function boot()
     {
         parent::boot();
-    }
-
-    public function map()
-    {
-        Route::prefix('gastropod')
+        $this->routes(function () {
+            Route::prefix('gastropod')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/gastropod.php'));
+        });
     }
 }
