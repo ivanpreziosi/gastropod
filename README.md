@@ -1,11 +1,10 @@
+**PLEASE NOTE THAT GASTROPOD IS STILL IN PRE-ALPHA STAGE, USE IT FOR EXPERIMENT OR IF YOU WANT TO CONTRIBUTE BUT DON'T USE IT IN A PRODUCTION ENVIRONMENT.**
+
 <p align="center">
   <img src="/resources/assets/img/gastropod.jpg" title="gastropod" style="width:25%!important;margin:auto;">
 </p>
 
 Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin pages for small websites. It assumes you already have a users table and a User Eloquent model to automatically create a simple Users and Admin crud. You can then further expand it to have it manage all of your tables, and you can setup a basic, yet expandable, crud system with very few lines of code. Gastropod views are created with [Bootstrap](https://getbootstrap.com/) and [jQuery](https://jquery.com/), and it pulls it's needed scripts and css from cdns without having you to do anything. Its Auth is based on existing Laravel Auth system, only adding a table to reference which users will be admitted to the crud. But users will still login against your own users table without having to modify it.
-
-**PLEASE NOTE THAT GASTROPOD IS STILL IN PRE-ALPHA STAGE, USE IT FOR EXPERIMENT OR IF YOU WANT TO CONTRIBUTE BUT DON'T USE IT IN A PRODUCTION ENVIRONMENT.**
-
 
 # Install
 You can install the package using composer:
