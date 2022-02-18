@@ -48,10 +48,8 @@ Last step is registering gastropod routes into your app's RouteServiceProvider. 
 ```php
 public function boot()
 {
-    $this->configureRateLimiting();
-
     $this->routes(function () {
-        [... YOUR OTHER ROUTES ..]
+        [... YOUR OTHER ROUTE GROUPS: web, api, ecc ..]
 
         //G@STROPOD
         Route::prefix('gastropod')
