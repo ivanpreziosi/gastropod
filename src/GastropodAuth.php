@@ -1,8 +1,7 @@
 <?php
 
-namespace RadFic\Gastropod\Http\Middleware;
+namespace RadFic\Gastropod;
 
-use Closure;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -11,24 +10,26 @@ use Illuminate\Support\Facades\DB;
 class GastropodAuth
 {
     /**
-     * Handle an incoming request.
+     * Check if logged user is a gastronaut
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    static function check()
     {
-        if(!config('gastropod.enable_gastropod_auth'))return $next($request);
+        if (!config('gastropod.enable_gastropod_auth')) {
+            return;
+        }
 
         if (!Auth::check()) {
-            return redirect('/gastropod/login');
+            redirect('/gastropod/login');
         }
 
         $user = Auth::user();
 
         if ($user == null) {
-            return redirect('/gastropod/login');
+            redirect('/gastropod/login');
         }
 
         $admin = DB::table('gastropod_admins')
@@ -36,11 +37,9 @@ class GastropodAuth
                 ->first();
 
         if ($admin == null) {
-            return redirect('/gastropod/login');
+            redirect('/gastropod/login');
         }
 
         Auth::user()->gastronaut = true;
-
-        return $next($request);
     }
 }
