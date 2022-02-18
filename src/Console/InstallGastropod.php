@@ -24,8 +24,7 @@ class InstallGastropod extends Command
             'migration',
             'assets',
             'views',
-            'controllers',
-            'routes'
+            'admin_model'
         ];
         foreach ($parts as $part) {
             $this->info("Publishing $part...");
@@ -60,11 +59,8 @@ class InstallGastropod extends Command
             case 'views':
                 return File::exists(resource_path('views/gastropod'));
                 break;
-            case 'controllers':
-                return File::exists(app_path('Http/Controllers/Gastropod'));
-                break;
-            case 'routes':
-                return File::exists(base_path('routes/gastropod.php'));
+            case 'admin_model':
+                return File::exists(app_path('Models/GastropodAdmin.php'));
                 break;
             default:
                 return false;
