@@ -1,10 +1,13 @@
 <?php
 
 namespace RadFic\Gastropod;
+/**
+ * Artisan Commands
+ */
 use RadFic\Gastropod\Console\InstallGastropod;
-use RadFic\Gastropod\Http\Middleware\GastropodAuth;
+use RadFic\Gastropod\Console\CreateGastropodController;
+
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\Router;
 
 class GastropodServiceProvider extends ServiceProvider
 {
