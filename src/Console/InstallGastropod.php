@@ -21,7 +21,7 @@ class InstallGastropod extends Command
         $this->info('Installing Gastropod...');
         $parts = [
             'config',
-            'migration',
+            'migrations',
             'assets',
             'views',
             'admin_model',
