@@ -16,7 +16,7 @@ class GastropodAdminController extends GastropodCrudController
         $this->model = GastropodAdmin::class;
         //define relations map
         $this->relationsMap = [
-            'profile' => [
+            'user' => [
                 'key' => "user_id",
                 'field' => 'email',
                 'model' => User::class
