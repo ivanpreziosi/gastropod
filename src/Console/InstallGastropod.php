@@ -72,7 +72,7 @@ class InstallGastropod extends Command
     {
         return $this->confirm(
             $what.' already exists. Do you want to overwrite it?',
-            false
+            true
         );
     }
 
