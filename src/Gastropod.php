@@ -73,7 +73,7 @@ class Gastropod
 	 * @param \Illuminate\Http\Request 
      * @return \Illuminate\Http\Response
      */
-    public function index(Illuminate\Http\Request $request)
+    public function index(\Illuminate\Http\Request $request)
     {
         $searchkey = $request->input('search-key', session('gastropod-index-search-key'));
         $searchField = $request->input('search-field', session('gastropod-index-search-field'));
@@ -152,7 +152,7 @@ class Gastropod
      * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function store(Illuminate\Http\Request $request)
+    public function store(\Illuminate\Http\Request $request)
     {
         $this->model::create($request->all());
         return redirect()->route($this->tableName.'.index')
@@ -223,7 +223,7 @@ class Gastropod
      * @param  \Illuminate\Database\Eloquent\Model 
      * @return \Illuminate\Http\Response
      */
-    public function update(Illuminate\Http\Request $request, $item)
+    public function update(\Illuminate\Http\Request $request, $item)
     {
         $itemObj = $this->model::find($item)->setHidden([]);
         $itemObj->update($request->all());
