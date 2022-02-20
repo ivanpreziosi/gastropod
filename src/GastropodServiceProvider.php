@@ -22,6 +22,7 @@ class GastropodServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallGastropod::class,
+                CreateGastropodController::class,
             ]);
 
             // Export the migration

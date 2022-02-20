@@ -86,6 +86,10 @@ public function boot()
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
 
 # Create your first gastropod crud
+If your Gastropod is up and running next thing you want to know is how to add models to the crud.
+So lets begin with ax example created from a real life scenario: you want to add a `users` table. Gastropod is always assuming that you already have your tables set up and your models, with all relevant relations defined, in place before you try to create a new crud, so lets assume we have already our tables and models: a `users` table and a `User` model.
+
+
 
 ## Create a controller for your resource crud
 ## Add a route for your resource
