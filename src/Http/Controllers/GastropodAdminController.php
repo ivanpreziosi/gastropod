@@ -28,7 +28,7 @@ class GastropodAdminController extends GastropodCrudController
         /**
          * The Eloquent model we want to crud.
          */
-        $this->model = GastropodAdmin::class;
+        $model = GastropodAdmin::class;
         
 		/**
 		 * Relations map is a map of all relations we want our crud to take care of.
@@ -36,7 +36,7 @@ class GastropodAdminController extends GastropodCrudController
 		 * `field` is the name of the field we want to show in our crud from the related table.
 		 * `model` is the Eloquent model of the referenced table.
 		 */
-        $this->relationsMap = [
+        $relationsMap = [
 			/**
 			 * We define this default relationship using gastropod_admins 
 			 * table's `user` relationship.
@@ -52,6 +52,6 @@ class GastropodAdminController extends GastropodCrudController
 		 * After setup we call GastropodCrudController's constructor 
 		 * to take care of the init job.
 		 */
-        parent::__construct();
+        parent::__construct($model,$relationsMap);
     }
 }

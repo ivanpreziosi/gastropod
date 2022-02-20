@@ -20,8 +20,11 @@ class GastropodCrudController extends Controller
     public $gastropod;
     public $relationsMap;
 
-    public function __construct()
+    public function __construct($model,$relationsMap)
     {
+        $this->model = $model;
+        $this->relationsMap = $relationsMap;
+
         $this->gastropod = new Gastropod(
             $this->model,
             $this->relationsMap
