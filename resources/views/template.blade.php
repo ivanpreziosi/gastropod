@@ -31,7 +31,7 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav me-auto mb-2 mb-md-0">
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="/gastropod/users">Users</a>
+							<a class="nav-link" aria-current="page" href="#">Users</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" aria-current="page" href="#">Another Section</a>
