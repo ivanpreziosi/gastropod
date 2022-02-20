@@ -11,11 +11,28 @@ You can install the package using composer:
 ```
 composer require radfic/gastropod
 ```
-After that you must run the `gastropod:install` artisan command:
+After that you will have to run the `gastropod:install` artisan command:
 ```
 php artisan gastropod:install
 ```
-This will publish all needed files into your App folder structure.
+It will publish a number of files in your app's directory structure:
+```
+--App
+  --Models
+    --GastropodAdmin.php //It's the default model which Gastropod will use to authenticate users.
+--config
+  --gastropod.php //Will hold all configuration parameters of Gastropod.
+--database
+  --migrations
+    --2022_02_14_000001_create_gastropod_admins_table.php //a migration which will create the gastropod_admins table in your db.
+--public
+  --gastropod_assets //will contain all required Gastropod assets: images, css, js and such.
+--resources
+  --views
+    -gastropod //will contain all Gastropod related views.
+--routes
+  --gastropod.php //a routes file to hols all Gastropod related routes.
+```
 
 ## Run Migrations
 After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741_create_gastropod_admins_table.php`.
@@ -27,7 +44,7 @@ php artisan migrate
 ```
 
 After running your migrations you should have a new table in your db: 'gastropod_admins'.
-```
+```sql
 |----------------------------------------|
 | gastropod_admins                       |
 |----------------------------------------|
@@ -37,8 +54,8 @@ After running your migrations you should have a new table in your db: 'gastropod
 Gastropod is assuming you have a users table and a User model in your app already. To let users use Gastropod you will have to add a record in this table per user, referencing the id of the user. The first Gastropod Admin has to be set with your own means (for example with PhpMyAdmin). Once Gastropo is installed you will add more admins using it's interface.
 
 ## Create First Admin
-Manually add an admin inserting a new record in `gastropod_admins`, referencing a users table row:
-```
+Manually add a first admin inserting a new record in `gastropod_admins`, referencing a users table row:
+```sql
 INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
 This user will now be allowed to login into gastropod. Every further user you would like to give access to Gastropod should have a related record in this table.
