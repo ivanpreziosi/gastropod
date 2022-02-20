@@ -4,6 +4,7 @@ namespace RadFic\Gastropod;
 
 use RadFic\Gastropod\GastropodAuth;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Http\Request;
 
 /**
  * Gastropod
