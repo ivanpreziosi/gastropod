@@ -68,11 +68,12 @@ public function boot()
     $this->routes(function () {
         [... YOUR OTHER ROUTE GROUPS: web, api, ecc ..]
 
-        //G@STROPOD
+        //G@STROPOD ROUTES->copy in your RouteServiceProvider
         Route::prefix('gastropod')
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/gastropod.php'));
+        //END of G@STROPOD ROUTES
 
     });
 }
