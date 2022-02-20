@@ -61,7 +61,7 @@ INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
 This user will now be allowed to login into gastropod. Every further user you would like to give access to Gastropod should have a related record in this table.
 
-## Register Gastropod Routes in RouteServiceProvider
+# 4)Register Gastropod Routes in RouteServiceProvider
 Last step is registering gastropod routes into your app's RouteServiceProvider. To do this open the file `app\Providers\RouteServiceProvider.php` and add the gastropod bit after all other entries in the boot function:
 ```php
 public function boot()
@@ -82,7 +82,7 @@ public function boot()
 
 ```
 
-## Check installation
+# Fished: check your installation!
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
 
 # Create your first gastropod crud
