@@ -53,7 +53,7 @@ class GastropodServiceProvider extends ServiceProvider
             ], 'admin_model');
 
             $this->publishes([
-                __DIR__.'../routes/gastropod.php' => base_path('routes/gastropod.php'),
+                __DIR__.'/../routes/gastropod.php' => base_path('routes/gastropod.php'),
             ], 'routes');
 
 
