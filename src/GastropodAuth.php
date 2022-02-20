@@ -23,21 +23,20 @@ class GastropodAuth
         }
 
         if (!Auth::check()) {
-            redirect('/gastropod/login');
+            return redirect('/gastropod/login');
         }
 
         $user = Auth::user();
 
         if ($user == null) {
-            redirect('/gastropod/login');
+            return redirect('/gastropod/login');
         }
-
         $admin = DB::table('gastropod_admins')
                 ->where('user_id', '=', $user->id)
                 ->first();
 
         if ($admin == null) {
-            redirect('/gastropod/login');
+            return redirect('/gastropod/login');
         }
 
         Auth::user()->gastronaut = true;

@@ -65,6 +65,10 @@ public function boot()
 ## Check installation
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
 
+# Create your first gastropod crud
+
+## Create a controller for your resource crud
+## Add a route for your resource
 
 ## Manually Publish all Gastropod files:
 If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
