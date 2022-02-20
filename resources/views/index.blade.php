@@ -31,7 +31,7 @@
 			<button class=" btn btn-outline-success" type="submit">Search</button>
 		</form>
 		<div style="float:right;font-size:2em;margin-top:-10px;">
-			&nbsp;&nbsp;<img src="{{ asset('/gastropod/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
+			&nbsp;&nbsp;<img src="{{ asset('/gastropod_asstes/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
 		</div>
 		<div style="float:left;">
 			<a class="btn btn-success" href="{{ url('gastropod/'.$name.'/create') }}">Create New</a>
