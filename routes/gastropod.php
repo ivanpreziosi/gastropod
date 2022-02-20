@@ -7,4 +7,10 @@ Route::prefix('gastropod')->middleware('web')->group(function () {
     Route::get('/login', [GastropodController::class,'getLogin']);
     Route::post('/login', [GastropodController::class,'doLogin']);
     Route::get('/logout', [GastropodController::class,'logout']);
+
+	Route::resources([
+        'users' => 'App\Http\Controllers\Gastropod\UserGastropodController',
+        'gastropod_admins' => 'RadFic\Gastropod\Http\Controllers\GastropodAdminController'
+    ]);
+
 });
