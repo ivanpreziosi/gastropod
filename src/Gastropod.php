@@ -32,7 +32,9 @@ class Gastropod
      */
     public function __construct($modelClass, $relationsMap)
     {
-		GastropodAuth::check();//redirect to login if not logged & gastronaut
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
         $this->model = $modelClass;
         $item = new $this->model();//an empty eloquent instance
 		$this->relations = $item->getRelations();
