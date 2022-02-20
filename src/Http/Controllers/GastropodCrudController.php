@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 use RadFic\Gastropod\Gastropod;
 
+/**
+ * GastropodCrudController
+ *
+ * Every Gastropod controller must extend this base Gastropod Controller.
+ *
+ */
 class GastropodCrudController extends Controller
 {
     public $model;

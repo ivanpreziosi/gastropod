@@ -2,6 +2,7 @@
 
 namespace RadFic\Gastropod\Http\Controllers;
 
+use RadFic\Gastropod\GastropodLoginCredential;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,9 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * This is the main controller taking care of login and logout operations on Gastropod.
+ */
 class GastropodController extends Controller
 {
     public function getLogin()
@@ -33,10 +37,23 @@ class GastropodController extends Controller
             return back()->withInput();
         }
 
+        $credentials = array();
         $credentials = array(
             'email' => $request->input('email'),
             'password' => $request->input('password')
         );
+
+
+        foreach(config('gastropod.gastropod_login_credentials') as $loginCredentialName => $loginCredentialData){
+            $credentialValue = null;
+            switch($loginCredentialData->type){
+                case GastropodLoginCredential::INPUT_REQUEST:
+                    $credentialValue = $request->input($loginCredentialData->key);
+                    break;
+            }
+             $credentials[$loginCredentialName] = $credentialValue;
+        }
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect(config('gastropod.default_page'));
