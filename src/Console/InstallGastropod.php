@@ -24,7 +24,8 @@ class InstallGastropod extends Command
             'migration',
             'assets',
             'views',
-            'admin_model'
+            'admin_model',
+            'routes'
         ];
         foreach ($parts as $part) {
             $this->info("Publishing $part...");

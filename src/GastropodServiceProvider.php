@@ -52,6 +52,11 @@ class GastropodServiceProvider extends ServiceProvider
                 __DIR__.'/Models/GastropodAdmin.php.stub' => app_path('Models/GastropodAdmin.php'),
             ], 'admin_model');
 
+            $this->publishes([
+                __DIR__.'../routes/gastropod.php' => base_path('routes/gastropod.php'),
+            ], 'routes');
+
+
            
         }
         $this->loadRoutesFrom(__DIR__.'../../routes/gastropod.php');
