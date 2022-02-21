@@ -2,101 +2,49 @@
 
 namespace RadFic\Gastropod\Console;
 
-use Illuminate\Console\Command;
+use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Filesystem\Filesystem;
 
-class CreateGastropodController extends Command
+class CreateGastropodController extends GeneratorCommand
 {
-    protected $signature = 	'gastropod:controller 
-							{model : The model you want to crud}';
+    protected $name = 'gastropod:controller';
     protected $description = 'Create a new Gastropod Controller in your App.';
+    protected $type = 'GastropodCrudController';
+    protected $signature = 	'gastropod:controller {model}';
     protected $stub = __DIR__ ."/../../stubs/gastropod.controller.stub";
 
-    /**
-     * Filesystem instance
-     * @var Filesystem
-     */
-    protected $files;
-
-    /**
-     * Create a new command instance.
-     * @param Filesystem $files
-     */
-    public function __construct(Filesystem $files)
+    protected function getDefaultNamespace($rootNamespace)
     {
-        parent::__construct();
-        $this->files = $files;
+        return $rootNamespace . 'RadFic\Gastropod\Http\Controllers';
     }
 
-
-    public function handle($model)
+    protected function getStub()
     {
-        $fullyQualifiedModelName = 'App\\Models\\'.$model;
-        $data = [
-            ':|:fullyQualifiedModelName:|:' => $fullyQualifiedModelName,
-            ':|:model:|:' => $model,
-        ];
-
-        $content = $this->getStubContents($this->stub, $data);
-        $destinationPath = app_path('Http/Controllers/Gastropod');
-        $destinationFilePath = $this->getDestinationFilePath($destinationPath, $model);
-
-        //create directory if needed
-        $this->makeDirectory($destinationPath);
-
-        //copy content as a php file
-        if (!$this->files->exists($destinationFilePath)) {
-            $this->files->put($destinationFilePath, $content);
-            $this->info("File : {$destinationFilePath} created");
-        } else {
-            $this->info("File : {$path} already exits");
-        }
+        return $stub;
     }
 
-    /**
-     * Replace the stub variables(key) with the desire value
-     *
-     * @param $stub
-     * @param array $stubVariables
-     * @return bool|mixed|string
-     */
-    public function getStubContents($stub, $stubVariables = [])
+    public function handle()
     {
-        $contents = file_get_contents($stub);
-
-        foreach ($stubVariables as $search => $replace) {
-            $contents = str_replace($search, $replace, $contents);
-        }
-
-        return $contents;
+        parent::handle();
+        $this->doOtherOperations();
     }
 
-    /**
-     * Get the full path of generate class
-     *
-     * @return string
-     */
-    public function getDestinationFilePath($destinationPath, $model)
+    protected function doOtherOperations()
     {
-        return $destinationPath . $model . '.php';
-    }
+        // Get the fully qualified class name (FQN)
+        $class = $this->qualifyClass($this->getNameInput());
 
-    /**
-     * Build the directory for the class if necessary.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    protected function makeDirectory($path)
-    {
-        if (! $this->files->isDirectory($path)) {
-            $this->files->makeDirectory($path, 0777, true, true);
-        }
+        // get the destination path, based on the default namespace
+        $path = $this->getPath($class);
 
-        return $path;
+        $content = file_get_contents($path);
+
+        // Update the file content with additional data (regular expressions)
+
+        file_put_contents($path, $content);
     }
 }
