@@ -14,7 +14,7 @@ class CreateGastropodController extends GeneratorCommand
     protected $name = 'make:gastropodController';
     protected $description = 'Create a new Gastropod Controller in your App.';
     protected $type = 'GastropodCrudController';
-    protected $signature = 	'make:gastropodController {name}';
+    protected $signature = 	'make:gastropodController {name} {model}';
 
     public function handle()
     {
@@ -35,19 +35,20 @@ class CreateGastropodController extends GeneratorCommand
     protected function getArguments()
     {
         return [
-            ['name', InputArgument::REQUIRED, 'The name of the eloquent model you want to crud.'],
+            ['name', InputArgument::REQUIRED, 'The classname of the controller you are about to create.'],
+            ['model', InputArgument::REQUIRED, 'The name of the eloquent model you want to crud.'],
         ];
     }
 
     protected function customizeStub()
     {
         // Get the fully qualified class name (FQN)
-        $modelClassName = $this->argument('name');
+        $modelClassName = $this->argument('model');
         //$modelFQN = $this->qualifyClass($modelClassName);
-        $controllerName = "Gastropod".$modelClassName."Controller";
+        $controllerName = $this->argument('name');
 
         // get the destination path, based on the default namespace
-        $path = $this->getPath($modelClassName);
+        $path = $this->getPath($controllerName);
         //get file contents
         $content = file_get_contents($path);
         //modify it
