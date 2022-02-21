@@ -33,24 +33,5 @@ class CreateGastropodController extends GeneratorCommand
         ];
     }
 
-    public function handle()
-    {
-        parent::handle();
-        //$this->doOtherOperations();
-    }
-
-    protected function doOtherOperations()
-    {
-        // Get the fully qualified class name (FQN)
-        $class = $this->argument($model);
-
-        // get the destination path, based on the default namespace
-        $path = $this->getPath($class);
-
-        $content = file_get_contents($path);
-
-        // Update the file content with additional data (regular expressions)
-
-        file_put_contents($path, $content);
-    }
+   
 }
