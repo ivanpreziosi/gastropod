@@ -1,17 +1,17 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers\Gastropod;
 use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 
 /** We need to import the models we will need later on. */
 use App\Models\:|:MODEL:|:;
 
 /**
- * DummyClass
+ * :|:CONTROLLERNAME:|:
  * 
  * It must extend RadFic\Gastropod\Http\Controllers\GastropodCrudController.
  */
-class DummyClass extends GastropodCrudController
+class :|:CONTROLLERNAME:|: extends GastropodCrudController
 {
 	/**
 	 * In the constructor we do all needed configuration for the resource crud.
