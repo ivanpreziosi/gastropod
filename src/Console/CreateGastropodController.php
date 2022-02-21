@@ -47,7 +47,7 @@ class CreateGastropodController extends GeneratorCommand
         $controllerName = "Gastropod".$modelClassName."Controller";
 
         // get the destination path, based on the default namespace
-        $path = $this->getPath($class);
+        $path = $this->getPath($modelClassName);
         //get file contents
         $content = file_get_contents($path);
         //modify it
