@@ -31,7 +31,6 @@ class InstallGastropod extends Command
             $this->info("Publishing $part...");
             if (!$this->exists($part)) {
                 $this->publishTag($part);
-                $this->info('Published '.$part);
             } else {
                 if ($this->shouldOverwrite($part)) {
                     $this->info("Overwriting $part...");
@@ -41,7 +40,6 @@ class InstallGastropod extends Command
                 }
             }
         }
-
         $this->info('Gastropod successfully installed!');
     }
 
