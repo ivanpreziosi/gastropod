@@ -82,7 +82,7 @@ public function boot()
 
 ```
 
-# Fished: check your installation!
+# Finished: check your installation!
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
 
 # Create your first gastropod crud
