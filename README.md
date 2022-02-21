@@ -88,6 +88,12 @@ Go to the `/gastropod` route to see if the login page is showing up. If it does 
 # Create your first gastropod crud
 If your Gastropod is up and running next thing you want to know is how to add models to the crud.
 So lets begin with ax example created from a real life scenario: you want to add a `users` table. Gastropod is always assuming that you already have your tables set up and your models, with all relevant relations defined, in place before you try to create a new crud, so lets assume we have already our tables and models: a `users` table and a `User` model.
+Lets start by using the custom artisan `make:gastropodController` command. It will need two parameters:
+- The name of the Controller you will create, for users controller i would suggest something like: `Gastropod\GastropodUserController`. Please note that this way the controller class file will be created in the Gastropod Folder under your `app/Http/Controllers` folder.
+- The name of the model you want to crud. In this example we want to crud the User model.
+```
+php artisan make:gastropodController Gastropod\GastropodUserController User
+```
 
 
 
