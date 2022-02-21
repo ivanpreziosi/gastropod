@@ -1,10 +1,13 @@
 <?php
 
 namespace RadFic\Gastropod;
+/**
+ * Artisan Commands
+ */
 use RadFic\Gastropod\Console\InstallGastropod;
-use RadFic\Gastropod\Http\Middleware\GastropodAuth;
+use RadFic\Gastropod\Console\CreateGastropodController;
+
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Routing\Router;
 
 class GastropodServiceProvider extends ServiceProvider
 {
@@ -22,6 +25,7 @@ class GastropodServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallGastropod::class,
+                CreateGastropodController::class,
             ]);
 
             // Export the migration
@@ -47,19 +51,18 @@ class GastropodServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/views' => resource_path('views/gastropod'),
             ], 'views');
 
-            // Publish controllers
+            // Publish GastropodAdmin model
             $this->publishes([
-                __DIR__.'/Http/Controllers' => app_path('Http/Controllers/Gastropod'),
-            ], 'controllers');
+                __DIR__.'/Models/GastropodAdmin.php.stub' => app_path('Models/GastropodAdmin.php'),
+            ], 'admin_model');
 
-            // Publish routes
             $this->publishes([
                 __DIR__.'/../routes/gastropod.php' => base_path('routes/gastropod.php'),
             ], 'routes');
+
+
+           
         }
-        //$this->loadRoutesFrom(base_path('routes/gastropod.php'));
-        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'gastropod');
-        $router = $this->app->make(Router::class);
-        $router->aliasMiddleware('gastropodAuth', GastropodAuth::class);
+        //$this->loadRoutesFrom(__DIR__.'../../routes/gastropod.php');
     }
 }

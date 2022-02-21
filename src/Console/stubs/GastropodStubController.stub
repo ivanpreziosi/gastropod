@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers\Gastropod;
+use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
+
+/** We need to import the models we will need later on. */
+use App\Models\:|:MODEL:|:;
+
+/**
+ * :|:CONTROLLERNAME:|:
+ * 
+ * It must extend RadFic\Gastropod\Http\Controllers\GastropodCrudController.
+ */
+class :|:CONTROLLERNAME:|: extends GastropodCrudController
+{
+	/**
+	 * In the constructor we do all needed configuration for the resource crud.
+	 */
+    public function __construct()
+    {
+        /**
+         * The Eloquent model we want to crud.
+         */
+        $model = :|:MODEL:|:::class;
+        
+		/**
+		 * Relations map is a map of all relations we want our crud to take care of.
+		 * `key` is the name of the field holding reference to the other class id.
+		 * `field` is the name of the field we want to show in our crud from the related table.
+		 * `model` is the Eloquent model of the referenced table.
+		 */
+        $relationsMap = [
+			/**
+			 * We define this default relationship using gastropod_admins 
+			 * table's `user` relationship.
+			 */	
+
+			 /* Example:
+			 'profile' => [
+                'key' => "profile_id",
+                'field' => 'name',
+                'model' => Profile::class  //always remember to import the other model as well, using `use`
+             ]
+			*/		
+        ];
+
+		/**
+		 * After setup we call GastropodCrudController's constructor 
+		 * to take care of the init job.
+		 */
+        parent::__construct($model,$relationsMap);
+    }
+}

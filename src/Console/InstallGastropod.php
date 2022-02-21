@@ -21,17 +21,16 @@ class InstallGastropod extends Command
         $this->info('Installing Gastropod...');
         $parts = [
             'config',
-            'migration',
+            'migrations',
             'assets',
             'views',
-            'controllers',
+            'admin_model',
             'routes'
         ];
         foreach ($parts as $part) {
             $this->info("Publishing $part...");
             if (!$this->exists($part)) {
                 $this->publishTag($part);
-                $this->info('Published '.$part);
             } else {
                 if ($this->shouldOverwrite($part)) {
                     $this->info("Overwriting $part...");
@@ -41,7 +40,6 @@ class InstallGastropod extends Command
                 }
             }
         }
-
         $this->info('Gastropod successfully installed!');
     }
 
@@ -60,11 +58,8 @@ class InstallGastropod extends Command
             case 'views':
                 return File::exists(resource_path('views/gastropod'));
                 break;
-            case 'controllers':
-                return File::exists(app_path('Http/Controllers/Gastropod'));
-                break;
-            case 'routes':
-                return File::exists(base_path('routes/gastropod.php'));
+            case 'admin_model':
+                return File::exists(app_path('Models/GastropodAdmin.php'));
                 break;
             default:
                 return false;
@@ -75,7 +70,7 @@ class InstallGastropod extends Command
     {
         return $this->confirm(
             $what.' already exists. Do you want to overwrite it?',
-            false
+            true
         );
     }
 

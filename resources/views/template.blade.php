@@ -22,7 +22,7 @@
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="container-fluid">
-				<img src="{{ asset('gastropod/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
+				<img src="{{ asset('gastropod_assets/img/gastropod.png') }}" class="img-fluid" style="width:50px;" />
 				 &nbsp;&nbsp;<a class="navbar-brand" href="{{config('gastropod.default_page')}}"> {{config('gastropod.name')}} </a> 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 					aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav me-auto mb-2 mb-md-0">
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="/gastropod/users">Users</a>
+							<a class="nav-link" aria-current="page" href="#">Users</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" aria-current="page" href="#">Another Section</a>

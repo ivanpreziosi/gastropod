@@ -6,28 +6,46 @@
 
 Gastropod a simple Laravel package intended to speed up and ease the creation of crud based admin pages for small websites. It assumes you already have a users table and a User Eloquent model to automatically create a simple Users and Admin crud. You can then further expand it to have it manage all of your tables, and you can setup a basic, yet expandable, crud system with very few lines of code. Gastropod views are created with [Bootstrap](https://getbootstrap.com/) and [jQuery](https://jquery.com/), and it pulls it's needed scripts and css from cdns without having you to do anything. Its Auth is based on existing Laravel Auth system, only adding a table to reference which users will be admitted to the crud. But users will still login against your own users table without having to modify it.
 
-# Install
+# 1)Install from composer
 You can install the package using composer:
 ```
 composer require radfic/gastropod
 ```
-After that you must run the `gastropod:install` artisan command:
+# 2)Run the artisan install script
+After that you will have to run the `gastropod:install` artisan command:
 ```
 php artisan gastropod:install
 ```
-This will publish all needed files into your App folder structure.
+It will publish a number of files in your app's directory structure:
+```
+--App
+  --Models
+    --GastropodAdmin.php //It's the default model which Gastropod will use to authenticate users.
+--config
+  --gastropod.php //Will hold all configuration parameters of Gastropod.
+--database
+  --migrations
+    --2022_02_14_000001_create_gastropod_admins_table.php //a migration which will create the gastropod_admins table in your db.
+--public
+  --gastropod_assets //will contain all required Gastropod assets: images, css, js and such.
+--resources
+  --views
+    -gastropod //will contain all Gastropod related views.
+--routes
+  --gastropod.php //a routes file to hols all Gastropod related routes.
+```
 
-## Run Migrations
+# 3)Run Migrations
 After publishng your assets, a new migration will be present in your app's migrations folder: `2022_02_13_172741_create_gastropod_admins_table.php`.
 It defines a new table in your database to hold reference to users allowed to access gastropod.
 
-Now you should run your migrations to let artisan create the table for you, by running the artisan migrate command:
+3)Now you should run your migrations to let artisan create the table for you, by running the artisan migrate command:
 ```
 php artisan migrate
 ```
 
 After running your migrations you should have a new table in your db: 'gastropod_admins'.
-```
+```sql
 |----------------------------------------|
 | gastropod_admins                       |
 |----------------------------------------|
@@ -36,35 +54,45 @@ After running your migrations you should have a new table in your db: 'gastropod
 ```
 Gastropod is assuming you have a users table and a User model in your app already. To let users use Gastropod you will have to add a record in this table per user, referencing the id of the user. The first Gastropod Admin has to be set with your own means (for example with PhpMyAdmin). Once Gastropo is installed you will add more admins using it's interface.
 
-## Create First Admin
-Manually add an admin inserting a new record in `gastropod_admins`, referencing a users table row:
-```
+## 3.1)Create First Admin
+Manually add a first admin inserting a new record in `gastropod_admins`, referencing a users table row:
+```sql
 INSERT INTO `gastropod_admins` (`user_id`) VALUES (USER-ID-TO-MAKE-ADMIN);
 ```
 This user will now be allowed to login into gastropod. Every further user you would like to give access to Gastropod should have a related record in this table.
 
-## Register Gastropod Routes in RouteServiceProvider
+# 4)Register Gastropod Routes in RouteServiceProvider
 Last step is registering gastropod routes into your app's RouteServiceProvider. To do this open the file `app\Providers\RouteServiceProvider.php` and add the gastropod bit after all other entries in the boot function:
 ```php
 public function boot()
 {
     $this->routes(function () {
-        [... YOUR OTHER ROUTE GROUPS: web, api, ecc ..]
-
-        //G@STROPOD
-        Route::prefix('gastropod')
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/gastropod.php'));
-
+    
+      /** [... YOUR OTHER ROUTE GROUPS: web, api, ecc ..] */
+      
+      //G@STROPOD ROUTES->copy in your RouteServiceProvider
+      Route::prefix('gastropod')
+          ->middleware('web')
+          ->namespace($this->namespace)
+          ->group(base_path('routes/gastropod.php'));
+      //END of G@STROPOD ROUTES
+      
     });
 }
 
 ```
 
-## Check installation
+# Fished: check your installation!
 Go to the `/gastropod` route to see if the login page is showing up. If it does you should login with the user related to [the record you inserted before](#create-first-admin) in the `gastropod_admins` table. If everything went fine you should see your users table now. And also a gastropod_admins table should be set up and accessible via the menu.
 
+# Create your first gastropod crud
+If your Gastropod is up and running next thing you want to know is how to add models to the crud.
+So lets begin with ax example created from a real life scenario: you want to add a `users` table. Gastropod is always assuming that you already have your tables set up and your models, with all relevant relations defined, in place before you try to create a new crud, so lets assume we have already our tables and models: a `users` table and a `User` model.
+
+
+
+## Create a controller for your resource crud
+## Add a route for your resource
 
 ## Manually Publish all Gastropod files:
 If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
