@@ -23,7 +23,7 @@ class CreateGastropodController extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__ ."/../../stubs/gastropod.controller.stub";
+        return __DIR__ ."/stubs/GastropodStubController.stub";
     }
     
     protected function getArguments()
