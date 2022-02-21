@@ -46,9 +46,10 @@ class CreateGastropodController extends GeneratorCommand
         $modelClassName = $this->argument('model');
         //$modelFQN = $this->qualifyClass($modelClassName);
         $controllerName = $this->argument('name');
+        $controllerFQN = $this->qualifyClass($controllerName);
 
         // get the destination path, based on the default namespace
-        $path = $this->getPath($controllerName);
+        $path = $this->getPath($controllerFQN);
         //get file contents
         $content = file_get_contents($path);
         //modify it
