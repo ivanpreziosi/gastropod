@@ -41,19 +41,19 @@ class CreateGastropodController extends GeneratorCommand
     }
 
     protected function customizeStub()
-    {
-        // Get the fully qualified class name (FQN)
+    {        
         $modelClassName = $this->argument('model');
-        //$modelFQN = $this->qualifyClass($modelClassName);
         $controllerName = $this->argument('name');
         $controllerFQN = $this->qualifyClass($controllerName);
+        $controllerNameParts = explode('\\',$controllerName);
+        $controllerClassName = $controllerNameParts[count($controllerNameParts)-1];
 
         // get the destination path, based on the default namespace
         $path = $this->getPath($controllerFQN);
         //get file contents
         $content = file_get_contents($path);
         //modify it
-        $content = str_replace(":|:CONTROLLERNAME:|:", $controllerName, $content);
+        $content = str_replace(":|:CONTROLLERNAME:|:", $controllerClassName, $content);
         $content = str_replace(":|:MODEL:|:", $modelClassName, $content);
         //save back
         file_put_contents($path, $content);
