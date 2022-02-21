@@ -94,39 +94,81 @@ Lets start by using the custom artisan `make:gastropodController` command. It wi
 ```
 php artisan make:gastropodController Gastropod\GastropodUserController User
 ```
+After that you will have a brand new Gastropod controller in your App. Check it out sinche you may want to modify it:
+```php
+<?php
 
+namespace App\Http\Controllers\Gastropod;
+use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 
+/** We need to import the models we will need later on. */
+use App\Models\User;
 
-## Create a controller for your resource crud
-## Add a route for your resource
+/**
+ * GastropodUserController
+ * 
+ * It must extend RadFic\Gastropod\Http\Controllers\GastropodCrudController.
+ */
+class GastropodUserController extends GastropodCrudController
+{
+	/**
+	 * In the constructor we do all needed configuration for the resource crud.
+	 */
+    public function __construct()
+    {
+        /**
+         * The Eloquent model we want to crud.
+         */
+        $model = User::class;
+        
+		/**
+		 * Relations map is a map of all relations we want our crud to take care of.
+		 * `key` is the name of the field holding reference to the other class id.
+		 * `field` is the name of the field we want to show in our crud from the related table.
+		 * `model` is the Eloquent model of the referenced table.
+		 */
+        $relationsMap = [
+			/**
+			 * We define this default relationship using gastropod_admins 
+			 * table's `user` relationship.
+			 */	
 
-## Manually Publish all Gastropod files:
-If you don't want to run the gastropod:install command or if you want to publish single tags you can run the vendor:publish artisan command to publish all files:
+			 /* Example:
+			 'profile' => [
+                'key' => "profile_id",
+                'field' => 'name',
+                'model' => Profile::class  //always remember to import the other model as well, using `use`
+             ]
+			*/		
+        ];
+
+		/**
+		 * After setup we call GastropodCrudController's constructor 
+		 * to take care of the init job.
+		 */
+        parent::__construct($model,$relationsMap);
+    }
+}
 ```
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider"
+Since our User model doesen't have relations to be considered our controller is ready as is. Now we just need to add the resource in our `routes/gastropod.php` file:
+```php
+  /** resource routes */
+  Route::resources([
+    /**
+    * gastropod_admins is installed by default: it manages the crud admin permissions on app users. 
+    */
+    'gastropod_admins' => 'RadFic\Gastropod\Http\Controllers\GastropodAdminController',
+    /** Our brand new resource: Users */
+    'users' => 'App\Http\Controllers\Gastropod\GastropodUserController',
+  ]);
 ```
-It will create:
-- migrations: a migration for a new table called `gastropod_admins` will be copied in your migrations folder (`database/migrations/`). This will create a new table in your db which will hold reference to the users allowed to browse and use gastropod. Check later the ["Run Migrations"](#run-migrations) paragraph for more infos.
-- config: a config file will be created in your app's config folder: `config/gastropod.php`. 
-- views: all the Gastropod crud related views will be located in `resources/views/gastropod/`.
-- assets: all the css, javascripts and image files will be located in `public/gastropod_assets/`.
-- controllers: a new gastropod folder will be created in `app/Http/Controllers/`.
-- routes: a new routes file will be created in `routes/gastropod.php`.
-### Manually publishing assets one by one:
-You may want to republish or publish only some of the assets. You can do this by running the artisan vendor:publish command specifing a tag:
-```
-#migrations
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="migrations"
-#config
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="config"
-#views
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="views"
-#assets
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="assets"
-#controllers
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="controllers"
-#routes
-php artisan vendor:publish --provider="RadFic\Gastropod\GastropodServiceProvider" --tag="routes"
-```
+There we will add a `user` entry after the default `gastropod_admins` entry. This will register all the relevant resource routes for our crud. Now we just have to test it out.
+Point your browser to the route `gastropod/users` and you should be presented with the right crud.
 
-
+Last thing you may want to do is update the Gastropod template view to add the user link to the navigation menu. So open the file `resources\views\gastropod\template.blade.php` and modify its nav bar as follows:
+```html
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="{{url('gastropod/users')}}">Users</a>
+</li>
+```
+That's it. Happy Gastropoding!
