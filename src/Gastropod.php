@@ -32,9 +32,6 @@ class Gastropod
      */
     public function __construct($modelClass, $relationsMap)
     {
-        if (!GastropodAuth::check()) {
-            return redirect('gastropod/login');
-        }
         $this->model = $modelClass;
         $item = new $this->model();//an empty eloquent instance
 		$this->relations = $item->getRelations();
@@ -78,6 +75,10 @@ class Gastropod
      */
     public function index(\Illuminate\Http\Request $request)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $searchkey = $request->input('search-key', session('gastropod-index-search-key'));
         $searchField = $request->input('search-field', session('gastropod-index-search-field'));
         $itemsPerPage = $request->input('ipp');
@@ -119,6 +120,10 @@ class Gastropod
      */
     public function create()
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $item = new $this->model();
         $columnNames = Schema::getColumnListing($item->getTable());
 
@@ -157,6 +162,10 @@ class Gastropod
      */
     public function store(\Illuminate\Http\Request $request)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $this->model::create($request->all());
         return redirect()->route($this->tableName.'.index')
                         ->with('success', 'Item created successfully.');
@@ -171,6 +180,10 @@ class Gastropod
      */
     public function show($item)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $itemObj = $this->model::find($item)->setHidden([]);
         foreach ($this->relationsMap as $relationName => $relationData) {
             $itemObj->$relationName;
@@ -191,6 +204,10 @@ class Gastropod
      */
     public function edit($item)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $itemObj = $this->model::find($item)->setHidden([]);
         $columnNames = Schema::getColumnListing($itemObj->getTable());
         $dropdowns = [];
@@ -228,6 +245,10 @@ class Gastropod
      */
     public function update(\Illuminate\Http\Request $request, $item)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $itemObj = $this->model::find($item)->setHidden([]);
         $itemObj->update($request->all());
     
@@ -243,6 +264,10 @@ class Gastropod
      */
     public function destroy($item)
     {
+        if (!GastropodAuth::check()) {
+            return redirect('gastropod/login');
+        }
+
         $itemObj = $this->model::find($item);
         $itemObj->delete();
         return redirect()->route($this->tableName.'.index')
