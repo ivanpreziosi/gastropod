@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Gastropod;
 use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 
 /** We need to import the models we will need later on. */
-use App\Models\User;
+use App\Models\:|:MODEL:|:;
 
 /**
- * GastropodStubController
+ * :|:CONTROLLERNAME:|:
  * 
  * It must extend RadFic\Gastropod\Http\Controllers\GastropodCrudController.
  */
-class GastropodStubController extends GastropodCrudController
+class :|:CONTROLLERNAME:|: extends GastropodCrudController
 {
 	/**
 	 * In the constructor we do all needed configuration for the resource crud.
@@ -21,7 +21,7 @@ class GastropodStubController extends GastropodCrudController
         /**
          * The Eloquent model we want to crud.
          */
-        $model = GastropodStubController::class;
+        $model = :|:MODEL:|:::class;
         
 		/**
 		 * Relations map is a map of all relations we want our crud to take care of.
@@ -33,7 +33,15 @@ class GastropodStubController extends GastropodCrudController
 			/**
 			 * We define this default relationship using gastropod_admins 
 			 * table's `user` relationship.
-			 */			
+			 */	
+
+			 /* Example:
+			 'profile' => [
+                'key' => "profile_id",
+                'field' => 'name',
+                'model' => Profile::class  //always remember to import the other model as well, using `use`
+             ]
+			*/		
         ];
 
 		/**
