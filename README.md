@@ -3,7 +3,7 @@
 <p align="center">
   <img src="/resources/assets/img/gastropod.jpg" title="gastropod" style="width:25%!important;margin:auto;">
 </p>
-
+ 
 Gastropod a simple Laravel package, loosely inspired by [Grocery Crud](https://github.com/scoumbourdis/grocery-crud) package for [Code Igniter](https://github.com/codeigniter4/CodeIgniter4), and intended to speed up and ease the creation of crud based admin pages for small websites. It assumes you already have a users table and a User Eloquent model to automatically create a simple Users and Admin crud. You can then further expand it to have it manage all of your tables, and you can setup a basic, yet expandable, crud system with very few lines of code. Gastropod views are created with [Bootstrap](https://getbootstrap.com/) and [jQuery](https://jquery.com/), and it pulls it's needed scripts and css from cdns without having you to do anything. Its Auth is based on existing Laravel Auth system, only adding a table to reference which users will be admitted to the crud. But users will still login against your own users table without having to modify it.
 
 # 1)Install from composer
