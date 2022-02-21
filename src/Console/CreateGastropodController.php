@@ -18,7 +18,7 @@ class CreateGastropodController extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . 'RadFic\Gastropod\Http\Controllers';
+        return $rootNamespace . '\App\Http\Controllers';
     }
 
     protected function getStub()
