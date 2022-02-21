@@ -1,7 +1,7 @@
 {
     "name": "radfic/gastropod",
     "type": "library",
-    "description": "A fast crud generator for laravel 8",
+    "description": "A minimal crud generator for laravel 8",
     "keywords": [
         "crud",
         "admin",
@@ -12,7 +12,10 @@
         "name": "Ivan Preziosi",
         "email": "ivan.preziosi@gmail.com"
     }],
-    "require": {},
+    "license": "Unlicense",
+    "require": {
+        "php": "^7.3|^8.0"
+    },
     "autoload": {
         "psr-4": {
             "RadFic\\Gastropod\\": "src"
