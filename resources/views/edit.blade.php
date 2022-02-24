@@ -32,7 +32,7 @@
 			$isWidget = false;
             if ($key != 'id') {
                 foreach ($widgets as $widget) {
-                    if ($widget->columnName == $columnName) {
+                    if ($widget->columnName == $key) {
                         $isWidget = true;
                         echo $widget->render();
                     }
