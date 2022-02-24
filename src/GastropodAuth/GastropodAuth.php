@@ -1,33 +1,35 @@
 <?php
 
-namespace RadFic\Gastropod;
+namespace RadFic\Gastropod\GastropodAuth;
 
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * GastropodAuth is the class in charge of checking if logged users are also allowed
+ * to browse the Gastropod area.
+ */
 class GastropodAuth
 {
     /**
      * Check if logged user is a gastronaut
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @return bool
      */
     public static function check()
     {
+        /** if disabled skip any check */
         if (!config('gastropod.enable_gastropod_auth')) {
             return true;
         }
 
+        /** check if user is currently logged */
         if (!Auth::check()) {
             return false;
         }
-        
-        
-
+           
         $user = Auth::user();
 
         if ($user == null) {

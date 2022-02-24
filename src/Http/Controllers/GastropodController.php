@@ -2,7 +2,7 @@
 
 namespace RadFic\Gastropod\Http\Controllers;
 
-use RadFic\Gastropod\GastropodLoginCredential;
+use RadFic\Gastropod\GastropodAuth\GastropodLoginCredential;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

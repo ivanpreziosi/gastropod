@@ -2,7 +2,7 @@
 
 namespace RadFic\Gastropod;
 
-use RadFic\Gastropod\GastropodAuth;
+use RadFic\Gastropod\GastropodAuth\GastropodAuth;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
