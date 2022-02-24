@@ -38,6 +38,7 @@ class GastropodRelation
      * @param string $field The name of the field we want to show in our crud
      * @param string $key Is the name of the field holding reference to the other class id
      * @param int $type Is the type of the relation (TYPE_11,TYPE_1N,TYPE_N1,TYPE_NN)
+     * @return \RadFic\Gastropod\GastropodRelation
      */
     public static function create($name, $model, $field, $key, $type = GastropodRelation::TYPE_11)
     {
@@ -52,6 +53,7 @@ class GastropodRelation
      * @param string $field The name of the field we want to show in our crud
      * @param string $key Is the name of the field holding reference to the other class id
      * @param int $type Is the type of the relation (TYPE_11,TYPE_1N,TYPE_N1,TYPE_NN)
+     * @return \RadFic\Gastropod\GastropodRelation
      */
     public function __construct($name, $model, $field, $key, $type = GastropodRelation::TYPE_11)
     {
