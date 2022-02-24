@@ -170,7 +170,8 @@ class Gastropod
 
         $itemObj = $this->model::find($item)->setHidden([]);
         foreach ($this->relationsMap as $relationData) {
-            $itemObj->$relationData->name;
+            $relationName = $relationData->name;
+            $itemObj->$relationName;
         }
         $data = [
             'name'=> $this->tableName,
