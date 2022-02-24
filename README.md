@@ -134,11 +134,11 @@ class GastropodUserController extends GastropodCrudController
 		/**
 		* If you need to define relations you shound use the following syntax:
       $relationsMap[] = GastropodRelation::create(
-        'user',							//the relationship name as is mapped in the Model
-        User::class,					//the Eloquent model of the referenced table
-        'email',						//the name of the field we want to show in our crud
-        'user_id',						//is the name of the field holding reference to the other class id
-        GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
+	'user',				//the relationship name as is mapped in the Model
+	User::class,			//the Eloquent model of the referenced table
+	'email',			//the name of the field we want to show in our crud
+	'user_id',			//is the name of the field holding reference to the other class id
+	GastropodRelation::TYPE_11	//the relation type: see in RadFic\Gastropod\GastropodRelation
       );
 		*/	
 
