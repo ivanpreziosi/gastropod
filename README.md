@@ -130,7 +130,7 @@ class GastropodUserController extends GastropodCrudController
 		 * `key` is the name of the field holding reference to the other class id.
 		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelation.
 		 */
-
+		 $relationsMap = array();
 		/**
 		* If you need to define relations you shound use the following syntax:
       $relationsMap[] = GastropodRelation::create(
