@@ -18,13 +18,7 @@ class Gastropod
     protected $model;//eloquent model classname
     protected $tableName;//table name
     protected $relations;//eloquent relations of the model
-    protected $relationsMap = [//relations map for the views
-        'profile' => [
-            'key' => "profile_id",
-            'field' => 'name',
-            'model' => Profile::class
-        ]
-    ];
+    protected $relationsMap = [];//relations map for the views
 
     /**
      * Constructor
@@ -46,12 +40,12 @@ class Gastropod
 	 */
     public function exploreRelations($item)
     {
-        foreach ($this->relationsMap as $relationName => $relationData) {
+        foreach ($this->relationsMap as $relationData) {
             $key = $relationData['key'];
-            $relation = $item->$relationName;
+            $relation = $relationData->name;
             $relationTable = $relation->getTable();
             //print_r($item->$relationName);die();
-            $relatedField = $relationData['field'];
+            $relatedField = $relationData->field;
             $fieldValue = ($relation!= null)?$relation->$relatedField:"";
 
             $newFieldName = $relationName."_".$relatedField."__REMOTE";
@@ -129,17 +123,17 @@ class Gastropod
 
         $dropdowns = [];
         foreach ($columnNames as $columnName) {
-            foreach ($this->relationsMap as $relationName => $relationData) {
-                if ($relationData['key'] == $columnName) {
+            foreach ($this->relationsMap as $relationData) {
+                if ($relationData->key == $columnName) {
                     $dropdowns[$columnName] = [];
 
-                    $dropdownData = $relationData['model']::get();
+                    $dropdownData = $relationData->model::get();
                     foreach ($dropdownData as $dd) {
-                        $ddText = $relationData['field'];
+                        $ddText = $relationData->field;
                         $dropdowns[$columnName][] = [
-                        'value' => $dd->id,
-                        'text' => $dd->$ddText,
-                    ];
+                            'value' => $dd->id,
+                            'text' => $dd->$ddText,
+                        ];
                     }
                 }
             }
@@ -185,8 +179,8 @@ class Gastropod
         }
 
         $itemObj = $this->model::find($item)->setHidden([]);
-        foreach ($this->relationsMap as $relationName => $relationData) {
-            $itemObj->$relationName;
+        foreach ($this->relationsMap as $relationData) {
+            $itemObj->$relationData->name;
         }
         $data = [
             'name'=> $this->tableName,
@@ -212,17 +206,17 @@ class Gastropod
         $columnNames = Schema::getColumnListing($itemObj->getTable());
         $dropdowns = [];
         foreach ($columnNames as $columnName) {
-            foreach ($this->relationsMap as $relationName => $relationData) {
-                if ($relationData['key'] == $columnName) {
+            foreach ($this->relationsMap as $relationData) {
+                if ($relationData->key == $columnName) {
                     $dropdowns[$columnName] = [];
 
-                    $dropdownData = $relationData['model']::get();
+                    $dropdownData = $relationData->model::get();
                     foreach ($dropdownData as $dd) {
-                        $ddText = $relationData['field'];
+                        $ddText = $relationData->field;
                         $dropdowns[$columnName][] = [
-                        'value' => $dd->id,
-                        'text' => $dd->$ddText,
-                    ];
+                            'value' => $dd->id,
+                            'text' => $dd->$ddText,
+                        ];
                     }
                 }
             }

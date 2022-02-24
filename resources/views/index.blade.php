@@ -12,19 +12,18 @@
 					<option value="" @php echo (session('gastropod-index-search-field')=='' )?"selected='selected'":"";  @endphp>Field</option>
 
 					@php
-			if(count($items)>0){
-			$item = $items[0];
-			$item = $item->toArray();
+					if(count($items)>0){
+						$item = $items[0];
+						$item = $item->toArray();
 
-			foreach($item as $key => $value){
-			if(!is_array($value) && strpos($key, " __REMOTE")==false){ @endphp <option value="{{$key}}" @php echo
-						(session('gastropod-index-search-field')==$key )?"selected='selected'":"";  @endphp>{{$key}}</option>
-
-			@php
-			}
-			}
-			}
-			@endphp
+						foreach($item as $key => $value){
+							if(!is_array($value) && strpos($key, " __REMOTE")==false){ @endphp <option value="{{$key}}" @php echo
+										(session('gastropod-index-search-field')==$key )?"selected='selected'":"";  @endphp>{{$key}}</option>
+							@php
+							}
+						}
+					}
+					@endphp
 
 				</select>
 			</div>

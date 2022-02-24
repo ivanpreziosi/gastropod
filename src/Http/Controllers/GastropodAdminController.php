@@ -7,6 +7,8 @@ use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 /** We need to import the models we will need later on. */
 use App\Models\User;
 use App\Models\GastropodAdmin;
+use RadFic\Gastropod\GastropodRelation;
+
 
 /**
  * GastropodAdminController
@@ -32,25 +34,24 @@ class GastropodAdminController extends GastropodCrudController
         
 		/**
 		 * Relations map is a map of all relations we want our crud to take care of.
-		 * `key` is the name of the field holding reference to the other class id.
-		 * `field` is the name of the field we want to show in our crud from the related table.
+		 * `name` is the relationship name as is mapped in the Model
 		 * `model` is the Eloquent model of the referenced table.
+		 * `field` is the name of the field we want to show in our crud from the related table.
+		 * `key` is the name of the field holding reference to the other class id.
+		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelation.
 		 */
-        $relationsMap = [
-			/**
-			 * We define this default relationship using gastropod_admins 
-			 * table's `user` relationship.
-			 */
-            'user' => [
-                'key' => "user_id",
-                'field' => 'email',
-                'model' => User::class
-            ]
-        ];
+        $relationsMap[] = GastropodRelation::create(
+			'user',							//the relationship name as is mapped in the Model
+			User::class,					//the Eloquent model of the referenced table
+			'email',						//the name of the field we want to show in our crud
+			'user_id',						//is the name of the field holding reference to the other class id
+			GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
+		);
 
 		/**
 		 * After setup we call GastropodCrudController's constructor 
 		 * to take care of the init job.
+		 * No need to touch this part.
 		 */
         parent::__construct($model,$relationsMap);
     }
