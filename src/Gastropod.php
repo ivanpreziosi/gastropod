@@ -43,14 +43,13 @@ class Gastropod
         foreach ($this->relationsMap as $relationData) {
             $key = $relationData->key;
             $relationName = $relationData->name;
+            $relatedField = $relationData->field;
+
             $relation = $item->$relationName;
             $relationTable = $relation->getTable();
             
-            $relatedField = $relationData->field;
             $fieldValue = ($relation!= null)?$relation->$relatedField:"";
-
             $newFieldName = $relationName."_".$relatedField."__REMOTE";
-
             $item->$newFieldName = "<a href='/gastropod/$relationTable/$relation->id'>$fieldValue</a>";
         }
     }
