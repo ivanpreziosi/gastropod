@@ -41,7 +41,7 @@ class Gastropod
     public function exploreRelations($item)
     {
         foreach ($this->relationsMap as $relationData) {
-            $key = $relationData['key'];
+            $key = $relationData->key;
             $relation = $relationData->name;
             $relationTable = $relation->getTable();
             //print_r($item->$relationName);die();
