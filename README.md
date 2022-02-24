@@ -208,3 +208,8 @@ $relationsMap[] = GastropodRelation::create(
 	GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
 );
 ```
+And lastly we need to add the relevant resource route in `/routes/gastropod.php`:
+```php
+   'profiles' => 'App\Http\Controllers\Gastropod\GastropodProfileController',
+```
+You can now go to the `gastropod/profiles` route and you should see your crud ready for you.
