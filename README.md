@@ -99,7 +99,7 @@ After that you will have a brand new Gastropod controller in your App. Check it 
 <?php
 
 namespace App\Http\Controllers\Gastropod;
-use RadFic\Gastropod\GastropodRelation;
+use RadFic\Gastropod\GastropodRelations\GastropodRelation;
 use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 
 /** We need to import the models we will need later on. */
@@ -128,7 +128,7 @@ class GastropodUserController extends GastropodCrudController
 		 * `model` is the Eloquent model of the referenced table.
 		 * `field` is the name of the field we want to show in our crud from the related table.
 		 * `key` is the name of the field holding reference to the other class id.
-		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelation.
+		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation.
 		 */
 		 $relationsMap = array();
 		/**
@@ -138,7 +138,7 @@ class GastropodUserController extends GastropodCrudController
 	User::class,			//the Eloquent model of the referenced table
 	'email',			//the name of the field we want to show in our crud
 	'user_id',			//is the name of the field holding reference to the other class id
-	GastropodRelation::TYPE_11	//the relation type: see in RadFic\Gastropod\GastropodRelation
+	GastropodRelation::TYPE_11	//the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation
       );
 		*/	
 
@@ -205,7 +205,7 @@ $relationsMap[] = GastropodRelation::create(
 	User::class,					//the Eloquent model of the referenced table
 	'email',						//the name of the field we want to show in our crud
 	'user_id',						//is the name of the field holding reference to the other class id
-	GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
+	GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation
 );
 ```
 And lastly we need to add the relevant resource route in `/routes/gastropod.php`:

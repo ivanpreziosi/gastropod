@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Gastropod;
 use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
-use RadFic\Gastropod\GastropodRelation;
+use RadFic\Gastropod\GastropodRelations\GastropodRelation;
 
 /** We need to import the models we will need later on. */
 use App\Models\:|:MODEL:|:;
@@ -30,7 +30,7 @@ class :|:CONTROLLERNAME:|: extends GastropodCrudController
 		 * `model` is the Eloquent model of the referenced table.
 		 * `field` is the name of the field we want to show in our crud from the related table.
 		 * `key` is the name of the field holding reference to the other class id.
-		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelation.
+		 * `type` is the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation.
 		 */
 		$relationsMap = array();		
 		/**
@@ -40,7 +40,7 @@ class :|:CONTROLLERNAME:|: extends GastropodCrudController
 			User::class,					//the Eloquent model of the referenced table
 			'email',						//the name of the field we want to show in our crud
 			'user_id',						//is the name of the field holding reference to the other class id
-			GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
+			GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation
 		);
 		*/	
 
