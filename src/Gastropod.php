@@ -43,7 +43,7 @@ class Gastropod
         foreach ($this->relationsMap as $relationData) {
             $key = $relationData->key;
             $relation = $relationData->name;
-            $relationTable = $relation->getTable();
+            $relationTable = $item->$relation->getTable();
             //print_r($item->$relationName);die();
             $relatedField = $relationData->field;
             $fieldValue = ($relation!= null)?$relation->$relatedField:"";
