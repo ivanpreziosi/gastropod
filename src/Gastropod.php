@@ -44,7 +44,6 @@ class Gastropod
             $key = $relationData->key;
             $relation = $relationData->name;
             $relationTable = $item->$relation->getTable();
-            //print_r($item->$relationName);die();
             $relatedField = $relationData->field;
             $fieldValue = ($relation!= null)?$relation->$relatedField:"";
 
