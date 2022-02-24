@@ -100,7 +100,7 @@ class Gastropod
     public function exploreRelationsForIndex($item)
     {
         foreach ($this->relationsMap as $relationData) {
-            $relationData->type->index($item);            
+            $relationData->type->index($item);
         }
     }
 
@@ -122,7 +122,10 @@ class Gastropod
         $widgets = [];
         foreach ($columnNames as $columnName) {
             foreach ($this->relationsMap as $relationData) {
-                $widgets[] = $relationData->type->create($columnName);                
+                $newWidget = $relationData->type->create($columnName);
+                if ($newWidget!=null) {
+                    $widgets[] = $newWidget;
+                }
             }
         }
         
