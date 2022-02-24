@@ -32,14 +32,14 @@ class GastropodOneRelation extends GastropodRelationType
     public function create($columnName)
     {
         $widget = null;
-        if ($relationData->key == $columnName) {
+        if ($this->relationData->key == $columnName) {
             $widget = new GastropodDropdownWidget();
             $widget->columnName = $columnName;
             $widget->options = array();
 
-            $dropdownData = $relationData->model::get();
+            $dropdownData = $this->relationData->model::get();
             foreach ($dropdownData as $dd) {
-                $ddText = $relationData->field;
+                $ddText = $this->relationData->field;
                 $widget->options[] = [
 					'value' => $dd->id,
 					'text' => $dd->$ddText,
