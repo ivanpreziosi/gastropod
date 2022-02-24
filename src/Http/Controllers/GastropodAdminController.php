@@ -8,6 +8,9 @@ use RadFic\Gastropod\Http\Controllers\GastropodCrudController;
 use App\Models\User;
 use App\Models\GastropodAdmin;
 use RadFic\Gastropod\GastropodRelations\GastropodRelation;
+use RadFic\Gastropod\GastropodRelations\GastropodRelationType;
+use RadFic\Gastropod\GastropodRelations\GastropodOneRelation;
+
 
 
 /**
@@ -45,7 +48,7 @@ class GastropodAdminController extends GastropodCrudController
 			User::class,					//the Eloquent model of the referenced table
 			'email',						//the name of the field we want to show in our crud
 			'user_id',						//is the name of the field holding reference to the other class id
-			GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation
+			GastropodOneRelation::class		//the relation type: see in RadFic\Gastropod\GastropodRelations\GastropodRelation
 		);
 
 		/**

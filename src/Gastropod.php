@@ -35,28 +35,6 @@ class Gastropod
         Paginator::useBootstrap();
     }
 
-
-    /**
-     * Explore the relations map to create entries in the front end.
-     *
-     * @param $item a Eloquent Model instance
-     */
-    public function exploreRelations($item)
-    {
-        foreach ($this->relationsMap as $relationData) {
-            $key = $relationData->key;
-            $relationName = $relationData->name;
-            $relatedField = $relationData->field;
-
-            $relation = $item->$relationName;
-            $relationTable = $relation->getTable();
-            
-            $fieldValue = ($relation!= null)?$relation->$relatedField:"";
-            $newFieldName = $relationName."_".$relatedField."__REMOTE";
-            $item->$newFieldName = "<a href='/gastropod/$relationTable/$relation->id'>$fieldValue</a>";
-        }
-    }
-
     /**
      * Just a simple function to format show data.
      *
@@ -104,7 +82,7 @@ class Gastropod
 
         //$items = $this->class::orderBy('id', 'desc')->paginate(20);
         foreach ($items as $item) {
-            $this->exploreRelations($item);
+            $this->exploreRelationsForIndex($item);
         }
 
         $data = [
@@ -112,6 +90,18 @@ class Gastropod
             'items' => $items
         ];
         return view('gastropod.index', $data);
+    }
+
+    /**
+     * Explore the relations map to create entries for the index page
+     *
+     * @param $item a Eloquent Model instance
+     */
+    public function exploreRelationsForIndex($item)
+    {
+        foreach ($this->relationsMap as $relationData) {
+            $relationData->type->index($item);            
+        }
     }
 
 
@@ -129,28 +119,17 @@ class Gastropod
         $item = new $this->model();
         $columnNames = Schema::getColumnListing($item->getTable());
 
-        $dropdowns = [];
+        $widgets = [];
         foreach ($columnNames as $columnName) {
             foreach ($this->relationsMap as $relationData) {
-                if ($relationData->key == $columnName) {
-                    $dropdowns[$columnName] = [];
-
-                    $dropdownData = $relationData->model::get();
-                    foreach ($dropdownData as $dd) {
-                        $ddText = $relationData->field;
-                        $dropdowns[$columnName][] = [
-                            'value' => $dd->id,
-                            'text' => $dd->$ddText,
-                        ];
-                    }
-                }
+                $widgets[] = $relationData->type->create($columnName);                
             }
         }
         
         $data = [
             'name'=> $this->tableName,
             'columnNames' => $columnNames,
-            'dropdowns' => $dropdowns
+            'widgets' => $widgets
         ];
         return view('gastropod.create', $data);
     }

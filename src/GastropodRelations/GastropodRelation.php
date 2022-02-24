@@ -35,12 +35,12 @@ class GastropodRelation
      * 
      * @param string $name Relation name in main Model definition
      * @param string $model The Eloquent model of the referenced table
-     * @param string $field The name of the field we want to show in our crud
-     * @param string $key Is the name of the field holding reference to the other class id
+     * @param string $field The name of the field, taken from the remote model, we want to show in our crud
+     * @param string $key Is the name of the field holding reference to the remote model id
      * @param int $type Is the type of the relation (TYPE_11,TYPE_1N,TYPE_N1,TYPE_NN)
      * @return \RadFic\Gastropod\GastropodRelations\GastropodRelation
      */
-    public static function create($name, $model, $field, $key, $type = GastropodRelation::TYPE_11)
+    public static function create($name, $model, $field, $key, $type = GastropodOneRelation::class)
     {
         return new GastropodRelation($name, $model, $field, $key, $type);
     }
@@ -50,15 +50,15 @@ class GastropodRelation
      *
      * @param string $name Relation name in main Model definition
      * @param string $model The Eloquent model of the referenced table
-     * @param string $field The name of the field we want to show in our crud
-     * @param string $key Is the name of the field holding reference to the other class id
+     * @param string $field The name of the field, taken from the remote model, we want to show in our crud
+     * @param string $key Is the name of the field holding reference to the remote model id
      * @param int $type Is the type of the relation (TYPE_11,TYPE_1N,TYPE_N1,TYPE_NN)
      * @return \RadFic\Gastropod\GastropodRelations\GastropodRelation
      */
-    public function __construct($name, $model, $field, $key, $type = GastropodRelation::TYPE_11)
+    public function __construct($name, $model, $field, $key, $type = GastropodOneRelation::class)
     {
         $this->name = $name;
-        $this->type = $type;
+        $this->type = new $type($this);
         $this->key = $key;
         $this->model = $model;
         $this->field = $field;

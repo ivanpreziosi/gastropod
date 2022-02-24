@@ -26,7 +26,7 @@ return [
      * Here you can specify which properties of your User model you want to attempt authentication on. 
      */
     'gastropod_login_credentials' => [
-        'email' => new \RadFic\Gastropod\GastropodLoginCredential(\RadFic\Gastropod\GastropodLoginCredential::INPUT_REQUEST,'email'),
-        'password' => new \RadFic\Gastropod\GastropodLoginCredential(\RadFic\Gastropod\GastropodLoginCredential::INPUT_REQUEST,'password'),
+        'email' => new \RadFic\Gastropod\GastropodAuth\GastropodLoginCredential(\RadFic\Gastropod\GastropodAuth\GastropodLoginCredential::INPUT_REQUEST,'email'),
+        'password' => new \RadFic\Gastropod\GastropodAuth\GastropodLoginCredential(\RadFic\Gastropod\GastropodAuth\GastropodLoginCredential::INPUT_REQUEST,'password'),
     ]
 ];

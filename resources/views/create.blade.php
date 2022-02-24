@@ -26,37 +26,26 @@
 	<div class="row">
 		@php
 		foreach($columnNames as $columnName){
-		if($columnName != 'id'){
-		//print_r($dropdowns);die();
-		if(array_key_exists($columnName,$dropdowns)){
-		@endphp
+			$isWidget = false;
+			if($columnName != 'id'){
+				foreach($widgets as $widget){
+					if($widget->columnName == $columnName){
+						$isWidget = true;
+						echo $widget->render();
+					}
+				}
 
-		<div class="form-group">
-			<label for="exampleFormControlSelect1">Select {{$columnName}}</label>
-			<select class="form-control" name="{{$columnName}}">
-				<option value="-1">Select something!</option>
-				@php  
-				foreach($dropdowns[$columnName] as $option){
+				if(!$isWidget){
 				@endphp
-				<option value="{{$option['value']}}">{{$option['text']}}</option>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="form-group">
+						<strong>{{$columnName}}:</strong>
+						<input type="text" name="{{$columnName}}" class="form-control" placeholder="" value="">
+					</div>
+				</div>
 				@php
 				}
-				@endphp
-			</select>
-		</div>
-
-		@php
-		}else{
-		@endphp
-		<div class="col-xs-12 col-sm-12 col-md-12">
-			<div class="form-group">
-				<strong>{{$columnName}}:</strong>
-				<input type="text" name="{{$columnName}}" class="form-control" placeholder="" value="">
-			</div>
-		</div>
-		@php
-		}
-		}
+			}
 		}
 		@endphp
 		<div class="col-xs-12 col-sm-12 col-md-12 text-center">
