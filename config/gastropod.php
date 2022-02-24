@@ -23,7 +23,7 @@ return [
      * Credentials needed to login. Gastropod will attempt to login your users calling
      * Laravel Illuminate\Support\Facades\Auth::attempt($credentials) and then
      * checking on the `gastropod_admins` table to see if the user is a valid gastronaut.
-     * Here you can specify which properties of your User model you want to attempt authentication on. 
+     * Here you can specify which properties of your User model you want to attempt authentication on.
      */
     'gastropod_login_credentials' => [
         'email' => new \RadFic\Gastropod\GastropodAuth\GastropodLoginCredential(\RadFic\Gastropod\GastropodAuth\GastropodLoginCredential::INPUT_REQUEST,'email'),
