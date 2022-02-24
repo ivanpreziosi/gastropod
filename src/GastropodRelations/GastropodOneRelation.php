@@ -48,4 +48,25 @@ class GastropodOneRelation extends GastropodRelationType
         }
 		return $widget;
     }
+
+	public function edit($columnName, $itemObj)
+    {
+        $widget = null;
+        if ($this->relationData->key == $columnName) {
+            $widget = new GastropodDropdownWidget();
+            $widget->columnName = $columnName;
+            $widget->options = array();
+			$widget->selectedOption = $itemObj->$columnName;
+
+            $dropdownData = $this->relationData->model::get();
+            foreach ($dropdownData as $dd) {
+                $ddText = $this->relationData->field;
+                $widget->options[] = [
+					'value' => $dd->id,
+					'text' => $dd->$ddText,
+				];
+            }
+        }
+		return $widget;
+    }
 }

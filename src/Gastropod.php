@@ -194,27 +194,21 @@ class Gastropod
 
         $itemObj = $this->model::find($item)->setHidden([]);
         $columnNames = Schema::getColumnListing($itemObj->getTable());
-        $dropdowns = [];
+
+        $widgets = [];
         foreach ($columnNames as $columnName) {
             foreach ($this->relationsMap as $relationData) {
-                if ($relationData->key == $columnName) {
-                    $dropdowns[$columnName] = [];
-
-                    $dropdownData = $relationData->model::get();
-                    foreach ($dropdownData as $dd) {
-                        $ddText = $relationData->field;
-                        $dropdowns[$columnName][] = [
-                            'value' => $dd->id,
-                            'text' => $dd->$ddText,
-                        ];
-                    }
+                $newWidget = $relationData->type->edit($columnName,$itemObj);
+                if ($newWidget!=null) {
+                    $widgets[] = $newWidget;
                 }
             }
         }
+        
         $data = [
             'name'=> $this->tableName,
             'item' => $itemObj->toArray(),
-            'dropdowns' => $dropdowns
+            'widgets' => $widgets
         ];
         return view('gastropod.edit', $data);
     }

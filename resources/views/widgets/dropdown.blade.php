@@ -5,7 +5,7 @@
 		@php  
 		foreach($options as $option){
 		@endphp
-		<option value="{{$option['value']}}">{{$option['text']}}</option>
+		<option value="{{$option['value']}}" @php if($selectedOption == $option['value]){echo 'selected=\'selected\'';} @endphp>{{$option['text']}}</option>
 		@php
 		}
 		@endphp
