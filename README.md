@@ -173,3 +173,28 @@ Last thing you may want to do is update the Gastropod template view to add the u
 </li>
 ```
 That's it. Happy Gastropoding!
+
+# One to One relations
+Let's create a Profile model Crud to manage a One to One relation. As always Gastropod is assuming you already have your models and tables. In this case we assume the existence of a `profiles` table:
+```sql
+--
+-- Table structure for table `profiles`
+--
+
+CREATE TABLE `profiles` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+And a relative Eloquent Model already in place. The Profile model have to define a relation Gastropod can use as this, in this case a belongsTo one to one:
+```php
+public function user()
+   {
+      return $this->belongsTo(User::class);
+   }
+```
+Having checked everything up let's create the profile crud controller:
+```
+php artisan make:gastropodController Gastropod\GastropodProfileController Profile
+```
