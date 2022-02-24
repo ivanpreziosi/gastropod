@@ -198,3 +198,13 @@ Having checked everything up let's create the profile crud controller:
 ```
 php artisan make:gastropodController Gastropod\GastropodProfileController Profile
 ```
+Now we should have a new controller in place in our app. Let's add the relation to the user:
+```php
+$relationsMap[] = GastropodRelation::create(
+	'user',							//the relationship name as is mapped in the Model
+	User::class,					//the Eloquent model of the referenced table
+	'email',						//the name of the field we want to show in our crud
+	'user_id',						//is the name of the field holding reference to the other class id
+	GastropodRelation::TYPE_11		//the relation type: see in RadFic\Gastropod\GastropodRelation
+);
+```
