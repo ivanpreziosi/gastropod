@@ -22,22 +22,25 @@ class Gastropod
 
     /**
      * Constructor
-     * @param $item a model instance
+     * @param string $modelClass a model instance
+     * @param array $relationsMap the relations map defined in the Controller
      */
     public function __construct($modelClass, $relationsMap)
     {
         $this->model = $modelClass;
         $item = new $this->model();//an empty eloquent instance
-		$this->relations = $item->getRelations();
-		$this->relationsMap = $relationsMap;
+        $this->relations = $item->getRelations();
+        $this->relationsMap = $relationsMap;
         $this->tableName = $item->getTable();
         Paginator::useBootstrap();
     }
 
 
-	/**
-	 * explore the relations map to create entries in the front end
-	 */
+    /**
+     * Explore the relations map to create entries in the front end.
+     *
+     * @param $item a Eloquent Model instance
+     */
     public function exploreRelations($item)
     {
         foreach ($this->relationsMap as $relationData) {
@@ -54,17 +57,22 @@ class Gastropod
         }
     }
 
-	public function formatShowData($showData)
+    /**
+     * Just a simple function to format show data.
+     *
+     * @param string $showData The string data in html format to show in the frontend.
+     */
+    public function formatShowData($showData)
     {
         $showData = \str_replace("[", "[<strong>", $showData);
         $showData = \str_replace("]", "</strong>]", $showData);
         return $showData;
     }
 
-	/**
+    /**
      * Display a listing of the records in the table.
      *
-	 * @param \Illuminate\Http\Request 
+     * @param \Illuminate\Http\Request $request The request object have to be passed by the controller.
      * @return \Illuminate\Http\Response
      */
     public function index(\Illuminate\Http\Request $request)
@@ -107,7 +115,7 @@ class Gastropod
     }
 
 
-	/**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -148,10 +156,10 @@ class Gastropod
     }
 
 
-	/**
+    /**
      * Store a newly created item in the database.
      *
-     * @param  \Illuminate\Http\Request
+     * @param  \Illuminate\Http\Request $request The request object have to be passed by the controller.
      * @return \Illuminate\Http\Response
      */
     public function store(\Illuminate\Http\Request $request)
@@ -166,10 +174,10 @@ class Gastropod
     }
 
 
-	/**
+    /**
      * Display the specified item.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Model  $item An Eloquent model instance to be displayed.
      * @return \Illuminate\Http\Response
      */
     public function show($item)
@@ -190,10 +198,10 @@ class Gastropod
     }
 
 
-	/**
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  Illuminate\Database\Eloquent\Model
+     * @param  Illuminate\Database\Eloquent\Model $item The item to create the form for.
      * @return \Illuminate\Http\Response
      */
     public function edit($item)
@@ -230,11 +238,11 @@ class Gastropod
     }
 
 
-	/**
+    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request
-     * @param  \Illuminate\Database\Eloquent\Model 
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Database\Eloquent\Model $item
      * @return \Illuminate\Http\Response
      */
     public function update(\Illuminate\Http\Request $request, $item)
@@ -250,10 +258,10 @@ class Gastropod
             ->with('success', 'Item successfully updated.');
     }
 
-	/**
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Database\Eloquent\Model
+     * @param  \Illuminate\Database\Eloquent\Model $item
      * @return \Illuminate\Http\Response
      */
     public function destroy($item)
